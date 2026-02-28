@@ -1,0 +1,291 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Brainscribe Solutions LLP — IT Services & Custom Application Development</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="services-page">
+  <header class="site-header">
+    <div class="container top">
+      <span class="top-spacer" aria-hidden="true"></span>
+      <a class="center-brand" href="index.html" aria-label="Brainscribe Home">
+        <img class="center-brand-mark" src="images/Brainscribe-Logo-Head.svg" alt="" aria-hidden="true">
+        <span>Brainscribe</span>
+      </a>
+      <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-label="Menu">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <path d="M3 5.5H17M3 10H17M3 14.5H17" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
+        </svg>
+      </button>
+      <nav class="nav-links" id="menu" aria-hidden="true">
+        <div class="menu-panel" role="dialog" aria-modal="true" aria-label="Site menu">
+          <div class="menu-shell">
+            <div class="menu-head">
+              <a class="menu-brand" href="index.html" aria-label="Brainscribe Home"><img class="menu-brand-mark" src="images/Brainscribe-Logo-Head.svg" alt="Brainscribe"></a>
+              <p class="menu-title">Brainscribe</p>
+              <button class="menu-close" type="button" aria-label="Close menu">&times;</button>
+            </div>
+            <div class="menu-body">
+              <div class="menu-links-col">
+                <a href="index.html"><span class="menu-link-title">Home</span><span class="menu-link-meta">Start here</span></a>
+                <a href="about.html"><span class="menu-link-title">About Us</span><span class="menu-link-meta">Who we are</span></a>
+                <a class="active" href="services.html"><span class="menu-link-title">Services</span><span class="menu-link-meta">What we do</span></a>
+                <a href="contact.html"><span class="menu-link-title">Contact Us</span><span class="menu-link-meta">Let's talk</span></a>
+                <a class="menu-cta-btn" href="contact.html">
+                  <span>Get in Touch</span>
+                  <span aria-hidden="true">&rarr;</span>
+                </a>
+              </div>
+              <a class="menu-story-card" href="about.html">
+                <img src="images/about-strategy-session.jpg" alt="Brainscribe team at work">
+                <span class="menu-story-chip">Our Story</span>
+                <span class="menu-story-meta">Engineering Intelligence. Empowering Growth.</span>
+              </a>
+            </div>
+            <div class="menu-foot">
+              <span class="menu-foot-line" aria-hidden="true"></span>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-hero sub-hero">
+      <div class="sub-hero-media" aria-hidden="true"></div>
+      <div class="sub-hero-grid-overlay" aria-hidden="true"></div>
+      <div class="sub-hero-glow glow-a" aria-hidden="true"></div>
+      <div class="sub-hero-glow glow-b" aria-hidden="true"></div>
+      <div class="container reveal">
+        <div class="sub-hero-content">
+          <div class="eyebrow">Our Services</div>
+          <h1>Comprehensive IT Services for <span class="text-accent-cyan">Modern Businesses</span></h1>
+          <p class="hero-copy">From custom software development to cloud infrastructure and eLearning — Brainscribe
+            delivers end-to-end technology solutions that drive real business outcomes.</p>
+        </div>
+      </div>
+    </section>
+
+    <nav class="service-nav">
+      <div class="container inner">
+        <a href="#microsoft">01. Custom Application</a>
+        <a href="#moodle">02. Moodle LMS</a>
+        <a href="#staffing">03. IT Staffing</a>
+        <a href="#xdt">04. Extended Development</a>
+        <a href="#hosting">05. Hosting & Infrastructure</a>
+        <a href="#instructional">06. Instructional & Graphic</a>
+      </div>
+    </nav>
+
+    <section class="services-carousel" id="servicesCarousel" aria-label="Services carousel">
+      <div class="services-carousel-pin">
+        <div class="container">
+          <div class="services-carousel-viewport" id="servicesCarouselViewport">
+            <div class="services-carousel-track" id="servicesCarouselTrack">
+              <article class="service-carousel-slide" id="microsoft" data-service-index="0">
+                <div class="service-carousel-copy panel reveal">
+                  <div class="badge">Service 01</div>
+                  <h2>Custom Application Development</h2>
+                  <p class="service-sub">Microsoft Technologies — .NET, SharePoint & SQL Server</p>
+                  <p>Enterprise software built for complex workflows, performance, and long-term maintainability.</p>
+                  <ul class="service-points">
+                    <li>ASP.NET Core and API engineering</li>
+                    <li>SharePoint portals and workflow automation</li>
+                    <li>SQL optimization and modernization</li>
+                  </ul>
+                  <a class="button primary" href="contact.html">Discuss Your Requirements</a>
+                </div>
+                <figure class="service-carousel-media panel reveal">
+                  <img src="images/services-custom-app.jpg" alt="Custom enterprise application development workspace">
+                  <figcaption>Microsoft .NET and SharePoint delivery at enterprise scale.</figcaption>
+                </figure>
+              </article>
+
+              <article class="service-carousel-slide" id="moodle" data-service-index="1">
+                <div class="service-carousel-copy panel reveal">
+                  <div class="badge">Service 02</div>
+                  <h2>Moodle LMS Solutions</h2>
+                  <p class="service-sub">Development, Customization & Integration</p>
+                  <p>Learning ecosystems tailored for adoption, engagement, and measurable outcomes.</p>
+                  <ul class="service-points">
+                    <li>Moodle setup, hosting, and scaling</li>
+                    <li>Theme, plugin, and integration development</li>
+                    <li>SSO and enterprise identity integration</li>
+                  </ul>
+                  <a class="button primary" href="contact.html">Discuss Your Requirements</a>
+                </div>
+                <figure class="service-carousel-media panel reveal">
+                  <img src="images/services-moodle-lms.jpg" alt="Digital learning environment on laptop and tablet screens">
+                  <figcaption>Modern Moodle experiences with performance and usability baked in.</figcaption>
+                </figure>
+              </article>
+
+              <article class="service-carousel-slide" id="staffing" data-service-index="2">
+                <div class="service-carousel-copy panel reveal">
+                  <div class="badge">Service 03</div>
+                  <h2>IT Staffing Services</h2>
+                  <p class="service-sub">Skilled Professionals Across All Technologies</p>
+                  <p>Fast access to pre-vetted talent for contract, contract-to-hire, or full-time needs.</p>
+                  <ul class="service-points">
+                    <li>Developers, QA, architects, and PM roles</li>
+                    <li>Shortlist turnaround in 48–72 hours</li>
+                    <li>Technical screening and verification included</li>
+                  </ul>
+                  <a class="button primary" href="contact.html">Discuss Your Requirements</a>
+                </div>
+                <figure class="service-carousel-media panel reveal">
+                  <img src="images/about-strategy-session.jpg" alt="Technology hiring and team onboarding discussion">
+                  <figcaption>Flexible staffing models aligned to your delivery timeline.</figcaption>
+                </figure>
+              </article>
+
+              <article class="service-carousel-slide" id="xdt" data-service-index="3">
+                <div class="service-carousel-copy panel reveal">
+                  <div class="badge">Service 04</div>
+                  <h2>Extended Development Teams (XDT)</h2>
+                  <p class="service-sub">Dedicated Offshore Teams That Work Like Your Own</p>
+                  <p>Dedicated delivery squads integrated with your tools, process, and engineering culture.</p>
+                  <ul class="service-points">
+                    <li>Full-time dedicated engineers and QA</li>
+                    <li>Daily collaboration and transparent reporting</li>
+                    <li>Scale teams up or down on demand</li>
+                  </ul>
+                  <a class="button primary" href="contact.html">Discuss Your Requirements</a>
+                </div>
+                <figure class="service-carousel-media panel reveal">
+                  <img src="images/services-xdt-team.jpg" alt="Distributed software team collaborating remotely">
+                  <figcaption>Offshore teams that behave like an in-house extension.</figcaption>
+                </figure>
+              </article>
+
+              <article class="service-carousel-slide" id="hosting" data-service-index="4">
+                <div class="service-carousel-copy panel reveal">
+                  <div class="badge">Service 05</div>
+                  <h2>Hosting & Infrastructure Management</h2>
+                  <p class="service-sub">Azure & AWS Cloud Services</p>
+                  <p>Secure, resilient cloud operations with active optimization for uptime and spend.</p>
+                  <ul class="service-points">
+                    <li>Cloud architecture, migration, and setup</li>
+                    <li>24/7 monitoring, incident response, backups</li>
+                    <li>DevOps pipelines and cost governance</li>
+                  </ul>
+                  <a class="button primary" href="contact.html">Discuss Your Requirements</a>
+                </div>
+                <figure class="service-carousel-media panel reveal">
+                  <img src="images/services-cloud-hosting.jpg" alt="Cloud infrastructure hardware and managed hosting environment">
+                  <figcaption>Azure and AWS infrastructure managed for performance and reliability.</figcaption>
+                </figure>
+              </article>
+
+              <article class="service-carousel-slide" id="instructional" data-service-index="5">
+                <div class="service-carousel-copy panel reveal">
+                  <div class="badge">Service 06</div>
+                  <h2>Instructional & Graphic Design</h2>
+                  <p class="service-sub">eLearning Content & Visual Design Services</p>
+                  <p>Learning design and media that turn complex subjects into engaging, practical experiences.</p>
+                  <ul class="service-points">
+                    <li>Instructional architecture and storyboarding</li>
+                    <li>Interactive module and simulation design</li>
+                    <li>Custom graphics, infographics, and assets</li>
+                  </ul>
+                  <a class="button primary" href="contact.html">Discuss Your Requirements</a>
+                </div>
+                <figure class="service-carousel-media panel reveal">
+                  <img src="images/services-instructional-design.jpg" alt="Instructional design planning with visual storyboarding materials">
+                  <figcaption>Instructional and visual systems built for learner impact.</figcaption>
+                </figure>
+              </article>
+            </div>
+          </div>
+
+          <div class="services-carousel-controls">
+            <button class="service-carousel-arrow prev" type="button" aria-label="Previous service">
+              <span>&larr;</span>
+            </button>
+            <div class="service-carousel-progress" aria-hidden="true">
+              <span id="servicesCarouselProgress"></span>
+            </div>
+            <p class="service-carousel-counter"><span id="servicesCarouselCurrent">01</span> / 06</p>
+            <button class="service-carousel-arrow next" type="button" aria-label="Next service">
+              <span>&rarr;</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section cta-band">
+      <div class="container reveal">
+        <h2>Not Sure Which Service You Need?</h2>
+        <p>Our consultants are happy to understand your requirements and recommend the right solution for your business.
+        </p>
+        <div class="actions"><a class="button primary" href="contact.html">Talk to an Expert</a></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="mega-footer">
+    <div class="upper">
+      <div class="container footer-grid">
+        <div>
+          <div class="footer-brand"><img class="footer-logo" src="images/Brainscribe-Logo.svg" alt="Brainscribe"></div>
+          <p class="footer-desc">Engineering Intelligence. <span class="text-accent-cyan">Empowering Growth.</span> Your trusted technology partner for custom
+            software, cloud, and eLearning solutions.</p>
+          <div class="footer-social"><a href="#" aria-label="LinkedIn">in</a><a href="#"
+              aria-label="Twitter / X">X</a><a href="#" aria-label="Facebook">f</a></div>
+        </div>
+        <div class="footer-col">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Our Services</h4>
+          <ul>
+            <li><a href="services.html">Microsoft .NET Development</a></li>
+            <li><a href="services.html">SharePoint Solutions</a></li>
+            <li><a href="services.html">Moodle LMS</a></li>
+            <li><a href="services.html">IT Staffing Services</a></li>
+            <li><a href="services.html">Extended Dev Teams (XDT)</a></li>
+            <li><a href="services.html">Azure & AWS Hosting</a></li>
+            <li><a href="services.html">Instructional Design</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Contact Us</h4>
+          <ul>
+            <li>
+              <p>Pune, Maharashtra<br>India — 411 001</p>
+            </li>
+            <li><a href="mailto:info@brainscribe.in">info@brainscribe.in</a></li>
+            <li><a href="tel:+912012345678">+91 20 1234 5678</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="container inner">
+        <p>© <span id="year"></span> Brainscribe. All rights reserved. | Pune, India</p>
+        
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+
+</html>

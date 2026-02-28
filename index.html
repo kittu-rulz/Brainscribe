@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Brainscribe Solutions LLP — IT Services & Custom Application Development</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="home-page">
+<header class="site-header">
+    <div class="container top">
+      <span class="top-spacer" aria-hidden="true"></span>
+      <a class="center-brand" href="index.html" aria-label="Brainscribe Home">
+        <img class="center-brand-mark" src="images/Brainscribe-Logo-Head.svg" alt="" aria-hidden="true">
+        <span>Brainscribe</span>
+      </a>
+      <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-label="Menu">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M3 5.5H17M3 10H17M3 14.5H17" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+      </button>
+      <nav class="nav-links" id="menu" aria-hidden="true">
+        <div class="menu-panel" role="dialog" aria-modal="true" aria-label="Site menu">
+          <div class="menu-shell">
+            <div class="menu-head">
+              <a class="menu-brand" href="index.html" aria-label="Brainscribe Home"><img class="menu-brand-mark" src="images/Brainscribe-Logo-Head.svg" alt="Brainscribe"></a>
+              <p class="menu-title">Brainscribe</p>
+              <button class="menu-close" type="button" aria-label="Close menu">&times;</button>
+            </div>
+            <div class="menu-body">
+              <div class="menu-links-col">
+                <a class="active" href="index.html"><span class="menu-link-title">Home</span><span class="menu-link-meta">Start here</span></a>
+                <a href="about.html"><span class="menu-link-title">About Us</span><span class="menu-link-meta">Who we are</span></a>
+                <a href="services.html"><span class="menu-link-title">Services</span><span class="menu-link-meta">What we do</span></a>
+                <a href="contact.html"><span class="menu-link-title">Contact Us</span><span class="menu-link-meta">Let's talk</span></a>
+                <a class="menu-cta-btn" href="contact.html">
+                  <span>Get in Touch</span>
+                  <span aria-hidden="true">&rarr;</span>
+                </a>
+              </div>
+              <a class="menu-story-card" href="about.html">
+                <img src="images/about-strategy-session.jpg" alt="Brainscribe team at work">
+                <span class="menu-story-chip">Our Story</span>
+                <span class="menu-story-meta">Engineering Intelligence. Empowering Growth.</span>
+              </a>
+            </div>
+            <div class="menu-foot">
+              <span class="menu-foot-line" aria-hidden="true"></span>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-hero home-hero" id="homeHero">
+      <canvas class="hero-canvas" id="heroCanvas" aria-hidden="true"></canvas>
+      <div class="hero-grid-overlay" aria-hidden="true"></div>
+      <div class="hero-noise" aria-hidden="true"></div>
+      <div class="hero-beam beam-a" aria-hidden="true"></div>
+      <div class="hero-beam beam-b" aria-hidden="true"></div>
+      <div class="hero-beam beam-c" aria-hidden="true"></div>
+      <div class="hero-glow glow-a" aria-hidden="true"></div>
+      <div class="hero-glow glow-b" aria-hidden="true"></div>
+
+      <div class="container hero-grid">
+        <div class="reveal">
+          <div class="eyebrow">Pune, India · Est. 2019</div>
+          <h1>Engineering Intelligence. <span class="text-accent-cyan">Empowering Growth.</span></h1>
+          <p class="hero-copy">Brainscribe is your trusted technology partner — delivering custom software, cloud infrastructure, and eLearning solutions that transform how businesses operate and grow.</p>
+          <div class="actions">
+            <a class="button primary" href="services.html">Explore Services</a>
+            <a class="button secondary" href="contact.html">Get in Touch</a>
+          </div>
+          <div class="hero-pulse-row reveal">
+            <span><b>50+</b> Projects Delivered</span>
+            <span><b>6+</b> Years in Business</span>
+            <span><b>24h</b> Response Window</span>
+          </div>
+        </div>
+
+        <aside class="dark-panel reveal interactive-tilt" data-tilt-strength="4.4">
+          <h3>What We Do</h3>
+          <ul class="matrix">
+            <li>Microsoft Technologies <span>Enterprise scale</span></li>
+            <li>Moodle LMS Solutions <span>Modern digital learning</span></li>
+            <li>IT Staffing Services <span>Fast team ramp-up</span></li>
+            <li>Extended Dev Teams (XDT) <span>Dedicated offshore teams</span></li>
+            <li>Cloud Hosting & Infrastructure <span>Azure and AWS</span></li>
+            <li>Instructional & Graphic Design <span>Learner engagement</span></li>
+          </ul>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section band-a">
+      <div class="container stat-grid reveal">
+        <article class="stat-card"><b data-count="6" data-suffix="+">6+</b><span>Years in Business</span></article>
+        <article class="stat-card"><b data-count="50" data-suffix="+">50+</b><span>Projects Delivered</span></article>
+        <article class="stat-card"><b data-count="2019">2019</b><span>Established</span></article>
+        <article class="stat-card"><b data-count="100" data-suffix="%">100%</b><span>Client Satisfaction</span></article>
+      </div>
+    </section>
+
+    <section class="section band-b">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="kicker">What We Do</p>
+          <h2>Our Core Services</h2>
+          <p class="intro">From enterprise software to cloud infrastructure and eLearning — we deliver end-to-end technology solutions tailored to your business needs.</p>
+        </div>
+
+        <figure class="media-frame media-frame-wide reveal">
+          <img src="images/home-core-services.jpg" alt="Brainscribe team collaborating on digital product strategy">
+          <figcaption>Cross-functional teams delivering secure, scalable technology outcomes.</figcaption>
+        </figure>
+
+        <div class="grid-3 core-services-grid">
+          <article class="card reveal"><div class="icon">MS</div><h3>Microsoft Technologies</h3><p>Custom application development using .NET, SharePoint, and SQL Server — built for enterprise scale and reliability.</p></article>
+          <article class="card reveal"><div class="icon">LM</div><h3>Moodle LMS Solutions</h3><p>End-to-end Moodle LMS development, customization, and third-party integration for modern digital learning.</p></article>
+          <article class="card reveal"><div class="icon">IT</div><h3>IT Staffing Services</h3><p>Skilled IT professionals across all technologies, placed quickly to meet your project timelines and goals.</p></article>
+          <article class="card reveal"><div class="icon">XD</div><h3>Extended Dev Teams (XDT)</h3><p>Dedicated offshore development teams that integrate seamlessly with your in-house operations.</p></article>
+          <article class="card reveal"><div class="icon">CL</div><h3>Cloud Hosting & Infrastructure</h3><p>Managed hosting and infrastructure services on Microsoft Azure and AWS for performance and uptime.</p></article>
+          <article class="card reveal"><div class="icon">ID</div><h3>Instructional & Graphic Design</h3><p>Compelling eLearning content and visual design that drives learner engagement and knowledge retention.</p></article>
+        </div>
+
+        <div class="actions actions-center mt-20">
+          <a class="button primary" href="services.html">View All Services</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section band-c">
+      <div class="container split">
+        <article class="panel reveal">
+          <p class="kicker">Why Brainscribe</p>
+          <h2>Built on Trust. <span class="text-accent-cyan">Driven by Results.</span></h2>
+          <p>With over six years of experience and 50+ successful projects, Brainscribe has earned the trust of businesses across industries. We combine deep technical expertise with a client-first mindset to deliver solutions that truly make a difference.</p>
+          <figure class="media-frame mt-14">
+            <img src="images/home-trust-team.jpg" alt="Technology professionals working together at Brainscribe">
+            <figcaption>Engineering rigor with a partnership mindset.</figcaption>
+          </figure>
+        </article>
+
+        <div class="grid-3 single-col-grid reveal">
+          <article class="card"><h3>Proven Expertise</h3><p>Six years of delivering enterprise-grade solutions across Microsoft technologies, cloud platforms, and eLearning.</p></article>
+          <article class="card"><h3>Agile Delivery</h3><p>Iterative, sprint-based delivery model that keeps projects on time, on budget, and aligned with your goals.</p></article>
+          <article class="card"><h3>Partnership Approach</h3><p>We work as an extension of your team — transparent communication, shared accountability, and long-term relationships.</p></article>
+          <article class="card"><h3>Global Reach, Local Roots</h3><p>Headquartered in Pune, India, we serve clients worldwide with a deep understanding of both local and global markets.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section cta-band">
+      <div class="container reveal">
+        <h2>Ready to Transform Your Business?</h2>
+        <p>Let's discuss how Brainscribe can help you build smarter, scale faster, and deliver better outcomes with technology.</p>
+        <div class="actions">
+          <a class="button primary" href="contact.html">Start a Conversation</a>
+          <a class="button secondary" href="services.html">Our Services</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="mega-footer">
+    <div class="upper">
+      <div class="container footer-grid">
+        <div>
+          <div class="footer-brand"><img class="footer-logo" src="images/Brainscribe-Logo.svg" alt="Brainscribe"></div>
+          <p class="footer-desc">Engineering Intelligence. <span class="text-accent-cyan">Empowering Growth.</span> Your trusted technology partner for custom software, cloud, and eLearning solutions.</p>
+          <div class="footer-social">
+            <a href="#" aria-label="LinkedIn">in</a>
+            <a href="#" aria-label="Twitter / X">X</a>
+            <a href="#" aria-label="Facebook">f</a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Our Services</h4>
+          <ul>
+            <li><a href="services.html">Microsoft .NET Development</a></li>
+            <li><a href="services.html">SharePoint Solutions</a></li>
+            <li><a href="services.html">Moodle LMS</a></li>
+            <li><a href="services.html">IT Staffing Services</a></li>
+            <li><a href="services.html">Extended Dev Teams (XDT)</a></li>
+            <li><a href="services.html">Azure & AWS Hosting</a></li>
+            <li><a href="services.html">Instructional Design</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Contact Us</h4>
+          <ul>
+            <li><p>Pune, Maharashtra<br>India — 411 001</p></li>
+            <li><a href="mailto:info@brainscribe.in">info@brainscribe.in</a></li>
+            <li><a href="tel:+912012345678">+91 20 1234 5678</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="container inner">
+        <p>© <span id="year"></span> Brainscribe. All rights reserved. | Pune, India</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
+
