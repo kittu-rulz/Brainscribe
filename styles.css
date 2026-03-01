@@ -1858,6 +1858,10 @@ body:not(.home-page) .page-hero .hero-copy {
 }
 
 @media (max-width: 760px) {
+  .service-nav {
+    display: none;
+  }
+
   .section {
     padding: clamp(1.8rem, 5.1vw, 2.35rem) 0;
   }
