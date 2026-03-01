@@ -1099,29 +1099,31 @@ body.menu-open .back-to-top {
 }
 
 @media (max-width: 760px) {
-  .services-carousel-controls {
-    grid-template-columns: auto 1fr auto;
+  .services-carousel-viewport {
+    overflow: visible;
+    scroll-snap-type: none;
+    padding-bottom: 0;
   }
 
-  .service-carousel-arrow.prev {
-    grid-column: 1;
-  }
-
-  .service-carousel-arrow.next {
-    grid-column: 3;
-  }
-
-  .service-carousel-progress {
-    grid-column: 1 / -1;
-    grid-row: 2;
-  }
-
-  .service-carousel-counter {
-    justify-self: center;
+  .services-carousel-track {
+    display: grid;
+    width: 100%;
+    gap: 12px;
+    padding-right: 0;
   }
 
   .service-carousel-slide {
-    min-width: min(92vw, 540px);
+    min-width: 100%;
+    grid-template-columns: 1fr;
+    scroll-snap-align: none;
+  }
+
+  .service-carousel-media {
+    display: none;
+  }
+
+  .services-carousel-controls {
+    display: none;
   }
 }
 

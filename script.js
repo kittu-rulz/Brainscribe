@@ -854,6 +854,7 @@
 
     const mobileCarouselMode = () =>
       !!servicesCarousel && !!carouselViewport && !!carouselTrack && carouselSlides.length > 0 && window.innerWidth <= 980;
+    const stackedMobileCardsMode = () => mobileCarouselMode() && window.innerWidth <= 760;
 
     const updateCarouselUi = (index) => {
       if (!carouselSlides.length) return;
@@ -890,6 +891,16 @@
       currentIndex = targetIndex;
       updateCarouselUi(currentIndex);
 
+      if (stackedMobileCardsMode()) {
+        if (smooth) {
+          slide.scrollIntoView({
+            behavior: smooth ? "smooth" : "auto",
+            block: "start"
+          });
+        }
+        return;
+      }
+
       if (mobileCarouselMode()) {
         if (!carouselViewport) return;
         carouselViewport.scrollTo({
@@ -903,7 +914,7 @@
     };
 
     const syncMobileByScroll = () => {
-      if (!carouselViewport || !carouselSlides.length || !mobileCarouselMode()) return;
+      if (!carouselViewport || !carouselSlides.length || !mobileCarouselMode() || stackedMobileCardsMode()) return;
       const left = carouselViewport.scrollLeft;
       let nextIndex = 0;
       let minDelta = Number.POSITIVE_INFINITY;
@@ -927,7 +938,9 @@
       window.addEventListener(
         "resize",
         () => {
-          if (mobileCarouselMode()) {
+          if (stackedMobileCardsMode()) {
+            updateCarouselUi(currentIndex);
+          } else if (mobileCarouselMode()) {
             goToSlide(currentIndex, false);
           } else {
             syncDesktopTransform();
@@ -940,7 +953,7 @@
         carouselViewport.addEventListener(
           "scroll",
           () => {
-            if (!mobileCarouselMode()) return;
+            if (!mobileCarouselMode() || stackedMobileCardsMode()) return;
             if (mobileScrollRaf) cancelAnimationFrame(mobileScrollRaf);
             mobileScrollRaf = requestAnimationFrame(syncMobileByScroll);
           },
