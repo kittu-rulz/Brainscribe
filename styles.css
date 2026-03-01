@@ -911,6 +911,74 @@ body.menu-open .back-to-top {
   gap: 14px;
 }
 
+.services-overview-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.service-overview-tile {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  height: 100%;
+}
+
+.service-overview-head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.service-overview-index {
+  width: 30px;
+  height: 30px;
+  border-radius: 9px;
+  background: linear-gradient(145deg, var(--cobalt), var(--navy));
+  color: #fff;
+  font: 700 0.78rem/1 "Space Grotesk", sans-serif;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.service-overview-icon {
+  width: 30px;
+  height: 30px;
+  border-radius: 9px;
+  padding: 5px;
+  border: 1px solid rgba(43, 108, 244, 0.28);
+  background: rgba(233, 244, 255, 0.9);
+}
+
+.service-overview-points {
+  margin: 4px 0 2px 18px;
+  color: var(--muted);
+  display: grid;
+  gap: 4px;
+  font-size: 0.9rem;
+}
+
+.service-overview-tile .button {
+  margin-top: auto;
+}
+
+.service-detail-shell {
+  max-width: 980px;
+  margin: 0 auto;
+}
+
+.service-detail-highlights {
+  margin: 10px 0 14px 18px;
+  color: var(--muted);
+  display: grid;
+  gap: 6px;
+}
+
+.service-detail-page .page-hero h1 {
+  max-width: 19ch;
+}
+
 .services-accordion {
   display: grid;
   gap: 12px;
@@ -1405,6 +1473,10 @@ body.menu-open .back-to-top {
 }
 
 @media (max-width: 980px) {
+  .services-overview-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
   .service-main-trigger {
     padding: 13px 14px;
   }
@@ -1478,6 +1550,10 @@ body.menu-open .back-to-top {
 }
 
 @media (max-width: 760px) {
+  .services-overview-grid {
+    grid-template-columns: 1fr;
+  }
+
   .service-accordion-item {
     padding: 0;
   }
