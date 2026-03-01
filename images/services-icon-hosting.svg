@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Hosting and infrastructure icon">
-  <path d="M22 47h28a9 9 0 0 0 1.5-17.9A13 13 0 0 0 26 27a8 8 0 0 0-4 15z" fill="none" stroke="#ffffff" stroke-width="4" stroke-linejoin="round"/>
-  <rect x="10" y="40" width="28" height="14" rx="4" fill="none" stroke="#ffffff" stroke-width="4"/>
-  <circle cx="17" cy="47" r="2" fill="#ffffff"/>
-  <circle cx="24" cy="47" r="2" fill="#ffffff"/>
+  <path d="M22 47h28a9 9 0 0 0 1.5-17.9A13 13 0 0 0 26 27a8 8 0 0 0-4 15z" fill="none" stroke="#2b6cf4" stroke-width="4" stroke-linejoin="round"/>
+  <rect x="10" y="40" width="28" height="14" rx="4" fill="none" stroke="#2b6cf4" stroke-width="4"/>
+  <circle cx="17" cy="47" r="2" fill="#2b6cf4"/>
+  <circle cx="24" cy="47" r="2" fill="#2b6cf4"/>
 </svg>
