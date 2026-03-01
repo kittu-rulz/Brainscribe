@@ -975,6 +975,29 @@ body.menu-open .back-to-top {
   gap: 6px;
 }
 
+.service-detail-media {
+  margin: 10px 0 12px;
+  border: 1px solid rgba(25, 52, 108, 0.14);
+  border-radius: 14px;
+  overflow: hidden;
+  background: rgba(244, 250, 255, 0.9);
+}
+
+.service-detail-media img {
+  width: 100%;
+  height: clamp(220px, 34vw, 360px);
+  object-fit: cover;
+  display: block;
+}
+
+.service-detail-media figcaption {
+  padding: 9px 12px 10px;
+  color: var(--muted-strong);
+  font-size: 0.85rem;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
 .service-detail-page .page-hero h1 {
   max-width: 19ch;
 }
@@ -1552,6 +1575,10 @@ body.menu-open .back-to-top {
 @media (max-width: 760px) {
   .services-overview-grid {
     grid-template-columns: 1fr;
+  }
+
+  .service-detail-media img {
+    height: clamp(190px, 56vw, 280px);
   }
 
   .service-accordion-item {
