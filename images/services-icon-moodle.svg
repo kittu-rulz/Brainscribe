@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Moodle service icon">
+  <path d="M8 24 32 12l24 12-24 12z" fill="#ffffff"/>
+  <path d="M16 30v10c0 6 7 11 16 11s16-5 16-11V30" fill="none" stroke="#ffffff" stroke-width="4" stroke-linecap="round"/>
+  <circle cx="52" cy="30" r="3.5" fill="#ffffff"/>
+</svg>
