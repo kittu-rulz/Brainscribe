@@ -2726,6 +2726,16 @@ body:not(.home-page) .page-hero .hero-copy {
   background-position: center 34%;
 }
 
+.privacy-page .sub-hero .sub-hero-media {
+  background-image: url("images/services-cloud-hosting.jpg");
+  background-position: center 38%;
+}
+
+.terms-page .sub-hero .sub-hero-media {
+  background-image: url("images/home-core-services.jpg");
+  background-position: center 34%;
+}
+
 .services-page .sub-hero .sub-hero-media {
   background-image: url("images/services-custom-app.jpg");
   background-position: center 38%;
@@ -2994,6 +3004,14 @@ body:not(.home-page) .page-hero .hero-copy {
 
   .legal-page .sub-hero .sub-hero-media {
     background-position: center 32%;
+  }
+
+  .privacy-page .sub-hero .sub-hero-media {
+    background-position: center 34%;
+  }
+
+  .terms-page .sub-hero .sub-hero-media {
+    background-position: center 30%;
   }
 
   .services-page .sub-hero .sub-hero-media {
