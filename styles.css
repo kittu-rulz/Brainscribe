@@ -2721,6 +2721,11 @@ body:not(.home-page) .page-hero .hero-copy {
   background-position: center 36%;
 }
 
+.legal-page .sub-hero .sub-hero-media {
+  background-image: url("images/about-growth-dashboard.jpg");
+  background-position: center 34%;
+}
+
 .services-page .sub-hero .sub-hero-media {
   background-image: url("images/services-custom-app.jpg");
   background-position: center 38%;
@@ -2921,6 +2926,46 @@ body:not(.home-page) .page-hero .hero-copy {
   margin-bottom: 0;
 }
 
+.legal-shell .legal-lead-card {
+  margin-bottom: 18px;
+}
+
+.legal-shell .legal-meta {
+  margin: 8px 0 10px;
+  font-size: 0.9rem;
+  color: var(--muted-strong);
+}
+
+.legal-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.legal-card {
+  height: 100%;
+}
+
+.legal-card h3 {
+  margin-bottom: 7px;
+  font-size: 1.04rem;
+}
+
+.legal-card p {
+  margin: 0;
+}
+
+.legal-card ul {
+  margin: 8px 0 0 18px;
+  color: var(--muted);
+  display: grid;
+  gap: 6px;
+}
+
+.legal-card-wide {
+  grid-column: 1 / -1;
+}
+
 @media (max-width: 760px) {
   .section[class*="band-"]::before,
   .section[class*="band-"]::after,
@@ -2947,6 +2992,10 @@ body:not(.home-page) .page-hero .hero-copy {
     background-position: center 34%;
   }
 
+  .legal-page .sub-hero .sub-hero-media {
+    background-position: center 32%;
+  }
+
   .services-page .sub-hero .sub-hero-media {
     background-position: center 30%;
   }
@@ -2964,6 +3013,10 @@ body:not(.home-page) .page-hero .hero-copy {
   .media-frame-compact img,
   .service-visual img {
     height: 188px;
+  }
+
+  .legal-grid {
+    grid-template-columns: 1fr;
   }
 }
 
