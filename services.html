@@ -76,30 +76,26 @@
       </div>
     </section>
 
-    <nav class="service-nav">
-      <div class="container inner">
-        <a href="#microsoft">01. Custom Application</a>
-        <a href="#moodle">02. Moodle LMS</a>
-        <a href="#staffing">03. IT Staffing</a>
-        <a href="#xdt">04. Extended Development</a>
-        <a href="#hosting">05. Hosting & Infrastructure</a>
-        <a href="#instructional">06. Instructional & Graphic</a>
-      </div>
-    </nav>
-
     <section class="services-carousel services-showcase" id="servicesCarousel" aria-label="Services overview and details">
       <div class="container">
         <div class="services-accordion" id="servicesAccordion">
-              <article class="service-accordion-item is-open" id="microsoft" data-service-index="0">
+              <article class="service-accordion-item" id="microsoft" data-service-index="0">
+                <button class="service-main-trigger" type="button" aria-expanded="false" aria-controls="microsoft-main-panel">
+                  <span class="service-main-label">
+                    <span class="service-main-index">01.</span>
+                    <span class="service-main-title">Custom Application</span>
+                  </span>
+                  <span class="service-main-icon" aria-hidden="true">+</span>
+                </button>
+                <div class="service-main-panel" id="microsoft-main-panel">
                 <div class="service-summary-card">
                   <div class="service-summary-head">
-                    <span class="service-accordion-index">01</span>
                     <img class="service-summary-icon" src="images/services-icon-microsoft.svg" alt="" aria-hidden="true">
                     <span class="service-accordion-label">
                       <strong>Microsoft Technology Solutions</strong>
                       <small>Enterprise-grade applications built on .NET, SharePoint, and SQL Server.</small>
                     </span>
-                    <button class="service-accordion-trigger" type="button" aria-expanded="true" aria-controls="microsoft-panel" aria-label="Toggle Custom Application details">
+                    <button class="service-accordion-trigger" type="button" aria-expanded="false" aria-controls="microsoft-panel" aria-label="Toggle Custom Application details">
                       <span class="service-accordion-icon" aria-hidden="true">+</span>
                     </button>
                   </div>
@@ -151,12 +147,20 @@
                     <a class="button primary" href="contact.html">Discuss Your Requirements</a>
                   </div>
                 </div>
+                </div>
               </article>
 
               <article class="service-accordion-item" id="moodle" data-service-index="1">
+                <button class="service-main-trigger" type="button" aria-expanded="false" aria-controls="moodle-main-panel">
+                  <span class="service-main-label">
+                    <span class="service-main-index">02.</span>
+                    <span class="service-main-title">Moodle LMS</span>
+                  </span>
+                  <span class="service-main-icon" aria-hidden="true">+</span>
+                </button>
+                <div class="service-main-panel" id="moodle-main-panel">
                 <div class="service-summary-card">
                   <div class="service-summary-head">
-                    <span class="service-accordion-index">02</span>
                     <img class="service-summary-icon" src="images/services-icon-moodle.svg" alt="" aria-hidden="true">
                     <span class="service-accordion-label">
                       <strong>Moodle LMS Services</strong>
@@ -215,12 +219,20 @@
                     <a class="button primary" href="contact.html">Discuss Your Requirements</a>
                   </div>
                 </div>
+                </div>
               </article>
 
               <article class="service-accordion-item" id="staffing" data-service-index="2">
+                <button class="service-main-trigger" type="button" aria-expanded="false" aria-controls="staffing-main-panel">
+                  <span class="service-main-label">
+                    <span class="service-main-index">03.</span>
+                    <span class="service-main-title">IT Staffing</span>
+                  </span>
+                  <span class="service-main-icon" aria-hidden="true">+</span>
+                </button>
+                <div class="service-main-panel" id="staffing-main-panel">
                 <div class="service-summary-card">
                   <div class="service-summary-head">
-                    <span class="service-accordion-index">03</span>
                     <img class="service-summary-icon" src="images/services-icon-staffing.svg" alt="" aria-hidden="true">
                     <span class="service-accordion-label">
                       <strong>IT Staffing Services</strong>
@@ -278,12 +290,20 @@
                     <a class="button primary" href="contact.html">Discuss Your Requirements</a>
                   </div>
                 </div>
+                </div>
               </article>
 
               <article class="service-accordion-item" id="xdt" data-service-index="3">
+                <button class="service-main-trigger" type="button" aria-expanded="false" aria-controls="xdt-main-panel">
+                  <span class="service-main-label">
+                    <span class="service-main-index">04.</span>
+                    <span class="service-main-title">Extended Development</span>
+                  </span>
+                  <span class="service-main-icon" aria-hidden="true">+</span>
+                </button>
+                <div class="service-main-panel" id="xdt-main-panel">
                 <div class="service-summary-card">
                   <div class="service-summary-head">
-                    <span class="service-accordion-index">04</span>
                     <img class="service-summary-icon" src="images/services-icon-xdt.svg" alt="" aria-hidden="true">
                     <span class="service-accordion-label">
                       <strong>Extended Development Teams (XDT)</strong>
@@ -351,12 +371,20 @@
                     <a class="button primary" href="contact.html">Discuss Your Requirements</a>
                   </div>
                 </div>
+                </div>
               </article>
 
               <article class="service-accordion-item" id="hosting" data-service-index="4">
+                <button class="service-main-trigger" type="button" aria-expanded="false" aria-controls="hosting-main-panel">
+                  <span class="service-main-label">
+                    <span class="service-main-index">05.</span>
+                    <span class="service-main-title">Hosting &amp; Infrastructure</span>
+                  </span>
+                  <span class="service-main-icon" aria-hidden="true">+</span>
+                </button>
+                <div class="service-main-panel" id="hosting-main-panel">
                 <div class="service-summary-card">
                   <div class="service-summary-head">
-                    <span class="service-accordion-index">05</span>
                     <img class="service-summary-icon" src="images/services-icon-hosting.svg" alt="" aria-hidden="true">
                     <span class="service-accordion-label">
                       <strong>Hosting &amp; Infrastructure Management</strong>
@@ -415,12 +443,20 @@
                     <a class="button primary" href="contact.html">Discuss Your Requirements</a>
                   </div>
                 </div>
+                </div>
               </article>
 
               <article class="service-accordion-item" id="instructional" data-service-index="5">
+                <button class="service-main-trigger" type="button" aria-expanded="false" aria-controls="instructional-main-panel">
+                  <span class="service-main-label">
+                    <span class="service-main-index">06.</span>
+                    <span class="service-main-title">Instructional &amp; Graphic</span>
+                  </span>
+                  <span class="service-main-icon" aria-hidden="true">+</span>
+                </button>
+                <div class="service-main-panel" id="instructional-main-panel">
                 <div class="service-summary-card">
                   <div class="service-summary-head">
-                    <span class="service-accordion-index">06</span>
                     <img class="service-summary-icon" src="images/services-icon-instructional.svg" alt="" aria-hidden="true">
                     <span class="service-accordion-label">
                       <strong>Instructional &amp; Graphic Design</strong>
@@ -479,6 +515,7 @@
                     </div>
                     <a class="button primary" href="contact.html">Discuss Your Requirements</a>
                   </div>
+                </div>
                 </div>
               </article>
             </div>

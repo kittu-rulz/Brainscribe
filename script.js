@@ -822,36 +822,33 @@
     badge.style.setProperty("--pulse-delay", `${index * 220}ms`);
   });
 
-  const serviceLinks = [...document.querySelectorAll(".service-nav a[href^='#']")];
   const serviceAccordionItems = [...document.querySelectorAll(".service-accordion-item[id]")];
 
   if (serviceAccordionItems.length) {
     const itemById = new Map(serviceAccordionItems.map((item) => [item.id, item]));
-    const firstId = serviceAccordionItems[0].id;
-    let activeId = firstId;
-
-    const setActiveService = (id, options = {}) => {
-      if (!itemById.has(id)) return;
-      activeId = id;
+    const setOpenItem = (id, options = {}) => {
+      const nextId = id && itemById.has(id) ? id : null;
       const scrollToItem = Boolean(options.scrollToItem);
 
-      serviceLinks.forEach((link) => {
-        const targetId = link.getAttribute("href")?.slice(1);
-        link.classList.toggle("is-active", targetId === id);
-      });
-
       serviceAccordionItems.forEach((item) => {
-        const isActive = item.id === id;
-        item.classList.toggle("is-open", isActive);
+        const isOpen = nextId === item.id;
+        item.classList.toggle("is-open", isOpen);
+        if (!isOpen) item.classList.remove("is-detail-open");
 
-        const trigger = item.querySelector(".service-accordion-trigger");
-        if (trigger) {
-          trigger.setAttribute("aria-expanded", String(isActive));
+        const mainTrigger = item.querySelector(".service-main-trigger");
+        if (mainTrigger) {
+          mainTrigger.setAttribute("aria-expanded", String(isOpen));
+        }
+
+        const detailTrigger = item.querySelector(".service-accordion-trigger");
+        if (detailTrigger) {
+          const detailOpen = isOpen && item.classList.contains("is-detail-open");
+          detailTrigger.setAttribute("aria-expanded", String(detailOpen));
         }
       });
 
-      if (scrollToItem) {
-        const item = itemById.get(id);
+      if (nextId && scrollToItem) {
+        const item = itemById.get(nextId);
         if (!item) return;
         item.scrollIntoView({
           behavior: reduceMotion ? "auto" : "smooth",
@@ -860,38 +857,52 @@
       }
     };
 
-    serviceLinks.forEach((link) => {
-      link.addEventListener("click", (event) => {
-        const id = link.getAttribute("href")?.slice(1);
-        if (!id || !itemById.has(id)) return;
-        event.preventDefault();
-        setActiveService(id, { scrollToItem: true });
-        if (history.replaceState) history.replaceState(null, "", `#${id}`);
-      });
-    });
-
     serviceAccordionItems.forEach((item) => {
-      const trigger = item.querySelector(".service-accordion-trigger");
-      if (!trigger) return;
+      const mainTrigger = item.querySelector(".service-main-trigger");
+      const detailTrigger = item.querySelector(".service-accordion-trigger");
 
-      trigger.addEventListener("click", () => {
-        if (item.id === activeId) return;
-        setActiveService(item.id, { scrollToItem: window.innerWidth <= 980 });
-        if (history.replaceState) history.replaceState(null, "", `#${item.id}`);
-      });
+      if (mainTrigger) {
+        mainTrigger.addEventListener("click", () => {
+          const isOpen = item.classList.contains("is-open");
+          if (isOpen) {
+            setOpenItem(null);
+            if (history.replaceState) {
+              history.replaceState(null, "", `${window.location.pathname}${window.location.search}`);
+            }
+            return;
+          }
+
+          setOpenItem(item.id, { scrollToItem: window.innerWidth <= 980 });
+          if (history.replaceState) history.replaceState(null, "", `#${item.id}`);
+        });
+      }
+
+      if (detailTrigger) {
+        detailTrigger.addEventListener("click", (event) => {
+          event.preventDefault();
+          event.stopPropagation();
+          if (!item.classList.contains("is-open")) return;
+
+          const detailOpen = item.classList.toggle("is-detail-open");
+          detailTrigger.setAttribute("aria-expanded", String(detailOpen));
+        });
+      }
     });
 
     const hashId = window.location.hash ? window.location.hash.slice(1) : "";
     if (hashId && itemById.has(hashId)) {
-      setActiveService(hashId);
+      setOpenItem(hashId);
     } else {
-      setActiveService(firstId);
+      setOpenItem(null);
     }
 
     window.addEventListener("hashchange", () => {
       const id = window.location.hash ? window.location.hash.slice(1) : "";
-      if (!id || !itemById.has(id)) return;
-      setActiveService(id);
+      if (!id || !itemById.has(id)) {
+        setOpenItem(null);
+        return;
+      }
+      setOpenItem(id, { scrollToItem: true });
     });
   }
 
