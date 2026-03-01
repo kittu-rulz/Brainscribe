@@ -4523,3 +4523,11 @@ body {
     border-bottom-color: rgba(14, 40, 78, 0.07);
   }
 }
+
+/* Tablet hero offset for fixed floating navbar */
+@media (min-width: 761px) and (max-width: 1024px) {
+  .page-hero,
+  body:not(.home-page) .page-hero {
+    padding-top: 6.5rem;
+  }
+}
