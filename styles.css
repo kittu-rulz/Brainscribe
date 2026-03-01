@@ -999,6 +999,26 @@ body.menu-open .back-to-top {
   min-height: 100%;
 }
 
+.service-feature-meta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin: 2px 0 10px;
+}
+
+.service-feature-icon {
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
+  padding: 5px;
+  border: 1px solid rgba(34, 100, 196, 0.26);
+  background: rgba(229, 241, 255, 0.84);
+}
+
+.service-feature-meta .section-tag {
+  margin: 0;
+}
+
 .service-feature-card .service-discuss-btn {
   margin-top: 24px;
   align-self: flex-start;
