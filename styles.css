@@ -3925,11 +3925,13 @@ body.menu-open .site-header .top > :not(.nav-links) {
   color: #5a6472;
   font: 600 0.83rem/1.35 "Manrope", sans-serif;
   letter-spacing: 0.01em;
+  transition: color 200ms ease, transform 200ms ease;
 }
 
 .site-header .menu-links-col a.menu-sub-link:hover,
 .site-header .menu-links-col a.menu-sub-link:focus-visible {
   color: #1d4ed8;
+  transform: translateX(8px);
 }
 
 .site-header .menu-links-col .menu-cta-btn {
