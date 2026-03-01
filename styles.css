@@ -2722,17 +2722,17 @@ body:not(.home-page) .page-hero .hero-copy {
 }
 
 .legal-page .sub-hero .sub-hero-media {
-  background-image: url("images/about-growth-dashboard.jpg");
+  background-image: url("images/legal-policy-hero.svg");
   background-position: center 34%;
 }
 
 .privacy-page .sub-hero .sub-hero-media {
-  background-image: url("images/services-cloud-hosting.jpg");
+  background-image: url("images/legal-policy-hero.svg");
   background-position: center 38%;
 }
 
 .terms-page .sub-hero .sub-hero-media {
-  background-image: url("images/home-core-services.jpg");
+  background-image: url("images/legal-policy-hero.svg");
   background-position: center 34%;
 }
 
