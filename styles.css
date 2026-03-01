@@ -2722,17 +2722,17 @@ body:not(.home-page) .page-hero .hero-copy {
 }
 
 .legal-page .sub-hero .sub-hero-media {
-  background-image: url("images/legal-policy-hero.svg");
+  background-image: url("images/legal-policy-hero.jpg");
   background-position: center 34%;
 }
 
 .privacy-page .sub-hero .sub-hero-media {
-  background-image: url("images/legal-policy-hero.svg");
+  background-image: url("images/legal-policy-hero.jpg");
   background-position: center 38%;
 }
 
 .terms-page .sub-hero .sub-hero-media {
-  background-image: url("images/legal-policy-hero.svg");
+  background-image: url("images/legal-policy-hero.jpg");
   background-position: center 34%;
 }
 
