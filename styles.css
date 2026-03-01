@@ -2687,6 +2687,36 @@ body:not(.home-page) .page-hero .hero-copy {
   background-position: center 38%;
 }
 
+.service-custom-page .sub-hero .sub-hero-media {
+  background-image: url("images/services-custom-app.jpg");
+  background-position: center 38%;
+}
+
+.service-moodle-page .sub-hero .sub-hero-media {
+  background-image: url("images/services-moodle-lms.jpg");
+  background-position: center 38%;
+}
+
+.service-staffing-page .sub-hero .sub-hero-media {
+  background-image: url("images/home-trust-team.jpg");
+  background-position: center 38%;
+}
+
+.service-xdt-page .sub-hero .sub-hero-media {
+  background-image: url("images/services-xdt-team.jpg");
+  background-position: center 38%;
+}
+
+.service-hosting-page .sub-hero .sub-hero-media {
+  background-image: url("images/services-cloud-hosting.jpg");
+  background-position: center 38%;
+}
+
+.service-instructional-page .sub-hero .sub-hero-media {
+  background-image: url("images/services-instructional-design.jpg");
+  background-position: center 38%;
+}
+
 .contact-page .sub-hero .sub-hero-media {
   background-image: url("images/contact-office.jpg");
   background-position: center 40%;
