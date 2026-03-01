@@ -823,193 +823,74 @@
   });
 
   const serviceLinks = [...document.querySelectorAll(".service-nav a[href^='#']")];
-  const servicesCarousel = document.getElementById("servicesCarousel");
-  const carouselViewport = document.getElementById("servicesCarouselViewport");
-  const carouselTrack = document.getElementById("servicesCarouselTrack");
-  const carouselSlides = carouselTrack ? [...carouselTrack.querySelectorAll(".service-carousel-slide")] : [];
-  const carouselPrev = document.querySelector(".service-carousel-arrow.prev");
-  const carouselNext = document.querySelector(".service-carousel-arrow.next");
-  const carouselProgress = document.getElementById("servicesCarouselProgress");
-  const carouselCurrent = document.getElementById("servicesCarouselCurrent");
+  const serviceSnapshotCards = [...document.querySelectorAll(".service-snapshot-card[data-service-target]")];
+  const serviceDetailPanels = [...document.querySelectorAll(".service-detail-panel[id]")];
 
-  if (serviceLinks.length) {
-    const clamp = (value, min, max) => Math.min(max, Math.max(min, value));
-    const map = new Map();
-    let currentIndex = 0;
-    let mobileScrollRaf = 0;
+  if (serviceDetailPanels.length) {
+    const detailById = new Map(serviceDetailPanels.map((panel) => [panel.id, panel]));
+    const validIds = [...detailById.keys()];
+    let activeId = validIds[0];
 
-    serviceLinks.forEach((link) => {
-      const id = link.getAttribute("href")?.slice(1);
-      if (!id) return;
-      const section = document.getElementById(id);
-      if (!section) return;
-      map.set(id, { link, section });
-    });
+    const setActiveService = (id, options = {}) => {
+      if (!detailById.has(id)) return;
+      activeId = id;
+      const scrollToDetail = Boolean(options.scrollToDetail);
 
-    const setActive = (id) => {
-      map.forEach(({ link }, key) => {
-        link.classList.toggle("is-active", key === id);
-      });
-    };
-
-    const mobileCarouselMode = () =>
-      !!servicesCarousel && !!carouselViewport && !!carouselTrack && carouselSlides.length > 0 && window.innerWidth <= 980;
-    const stackedMobileCardsMode = () => mobileCarouselMode() && window.innerWidth <= 760;
-
-    const updateCarouselUi = (index) => {
-      if (!carouselSlides.length) return;
-      currentIndex = clamp(index, 0, carouselSlides.length - 1);
-      const activeSlide = carouselSlides[currentIndex];
-      if (activeSlide?.id) setActive(activeSlide.id);
-
-      if (carouselProgress) {
-        const pct = ((currentIndex + 1) / carouselSlides.length) * 100;
-        carouselProgress.style.width = `${pct}%`;
-      }
-
-      if (carouselCurrent) {
-        carouselCurrent.textContent = String(currentIndex + 1).padStart(2, "0");
-      }
-
-      if (carouselPrev) carouselPrev.disabled = currentIndex === 0;
-      if (carouselNext) carouselNext.disabled = currentIndex === carouselSlides.length - 1;
-    };
-
-    const syncDesktopTransform = () => {
-      if (!carouselTrack || !carouselSlides.length || !carouselViewport || mobileCarouselMode()) return;
-      const targetSlide = carouselSlides[currentIndex];
-      if (!targetSlide) return;
-      carouselTrack.style.transform = `translate3d(${-targetSlide.offsetLeft}px, 0, 0)`;
-    };
-
-    const goToSlide = (index, smooth = !reduceMotion) => {
-      if (!carouselSlides.length) return;
-      const targetIndex = clamp(index, 0, carouselSlides.length - 1);
-      const slide = carouselSlides[targetIndex];
-      if (!slide) return;
-
-      currentIndex = targetIndex;
-      updateCarouselUi(currentIndex);
-
-      if (stackedMobileCardsMode()) {
-        if (smooth) {
-          slide.scrollIntoView({
-            behavior: smooth ? "smooth" : "auto",
-            block: "start"
-          });
-        }
-        return;
-      }
-
-      if (mobileCarouselMode()) {
-        if (!carouselViewport) return;
-        carouselViewport.scrollTo({
-          left: slide.offsetLeft,
-          behavior: smooth ? "smooth" : "auto"
-        });
-        return;
-      }
-
-      syncDesktopTransform();
-    };
-
-    const syncMobileByScroll = () => {
-      if (!carouselViewport || !carouselSlides.length || !mobileCarouselMode() || stackedMobileCardsMode()) return;
-      const left = carouselViewport.scrollLeft;
-      let nextIndex = 0;
-      let minDelta = Number.POSITIVE_INFINITY;
-
-      carouselSlides.forEach((slide, index) => {
-        const delta = Math.abs(slide.offsetLeft - left);
-        if (delta < minDelta) {
-          minDelta = delta;
-          nextIndex = index;
-        }
+      serviceLinks.forEach((link) => {
+        const targetId = link.getAttribute("href")?.slice(1);
+        link.classList.toggle("is-active", targetId === id);
       });
 
-      if (nextIndex !== currentIndex) {
-        updateCarouselUi(nextIndex);
+      serviceSnapshotCards.forEach((card) => {
+        const isActive = card.getAttribute("data-service-target") === id;
+        card.classList.toggle("is-active", isActive);
+        card.setAttribute("aria-expanded", String(isActive));
+      });
+
+      serviceDetailPanels.forEach((panel) => {
+        const isActive = panel.id === id;
+        panel.classList.toggle("is-active", isActive);
+        panel.setAttribute("aria-hidden", String(!isActive));
+      });
+
+      if (scrollToDetail && window.innerWidth <= 980) {
+        const panel = detailById.get(id);
+        if (!panel) return;
+        panel.scrollIntoView({
+          behavior: reduceMotion ? "auto" : "smooth",
+          block: "start"
+        });
       }
     };
-
-    if (carouselSlides.length) {
-      goToSlide(0, false);
-
-      window.addEventListener(
-        "resize",
-        () => {
-          if (stackedMobileCardsMode()) {
-            updateCarouselUi(currentIndex);
-          } else if (mobileCarouselMode()) {
-            goToSlide(currentIndex, false);
-          } else {
-            syncDesktopTransform();
-          }
-        },
-        { passive: true }
-      );
-
-      if (carouselViewport) {
-        carouselViewport.addEventListener(
-          "scroll",
-          () => {
-            if (!mobileCarouselMode() || stackedMobileCardsMode()) return;
-            if (mobileScrollRaf) cancelAnimationFrame(mobileScrollRaf);
-            mobileScrollRaf = requestAnimationFrame(syncMobileByScroll);
-          },
-          { passive: true }
-        );
-      }
-
-      if (carouselPrev) {
-        carouselPrev.addEventListener("click", () => {
-          goToSlide(currentIndex - 1);
-        });
-      }
-
-      if (carouselNext) {
-        carouselNext.addEventListener("click", () => {
-          goToSlide(currentIndex + 1);
-        });
-      }
-    } else {
-      const sections = [...map.values()].map((item) => item.section);
-      if (sections.length && "IntersectionObserver" in window) {
-        const so = new IntersectionObserver(
-          (entries) => {
-            const visible = entries
-              .filter((entry) => entry.isIntersecting)
-              .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
-
-            if (visible[0]) {
-              setActive(visible[0].target.id);
-            }
-          },
-          {
-            rootMargin: "-42% 0px -48% 0px",
-            threshold: [0, 0.2, 0.45, 0.7]
-          }
-        );
-
-        sections.forEach((section) => so.observe(section));
-        setActive(sections[0].id);
-      }
-    }
 
     serviceLinks.forEach((link) => {
       link.addEventListener("click", (event) => {
         const id = link.getAttribute("href")?.slice(1);
-        if (!id || !map.has(id)) return;
-
-        if (carouselSlides.length) {
-          event.preventDefault();
-          const targetIndex = carouselSlides.findIndex((slide) => slide.id === id);
-          if (targetIndex >= 0) goToSlide(targetIndex);
-          return;
-        }
-
-        setActive(id);
+        if (!id || !detailById.has(id)) return;
+        event.preventDefault();
+        setActiveService(id, { scrollToDetail: true });
       });
+    });
+
+    serviceSnapshotCards.forEach((card) => {
+      card.addEventListener("click", () => {
+        const id = card.getAttribute("data-service-target");
+        if (!id || !detailById.has(id)) return;
+        setActiveService(id, { scrollToDetail: true });
+      });
+    });
+
+    const hashId = window.location.hash ? window.location.hash.slice(1) : "";
+    if (hashId && detailById.has(hashId)) {
+      setActiveService(hashId);
+    } else {
+      setActiveService(activeId);
+    }
+
+    window.addEventListener("hashchange", () => {
+      const id = window.location.hash ? window.location.hash.slice(1) : "";
+      if (!id || !detailById.has(id)) return;
+      setActiveService(id);
     });
   }
 
