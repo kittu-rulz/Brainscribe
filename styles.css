@@ -1857,9 +1857,40 @@ body:not(.home-page) .page-hero .hero-copy {
   background: linear-gradient(180deg, rgba(247, 251, 255, 0.95), rgba(255, 255, 255, 0.86));
 }
 
+.card.contact-form-shell {
+  border-style: solid;
+  border-color: rgba(47, 119, 214, 0.34);
+  background:
+    radial-gradient(130% 120% at 10% 0%, rgba(56, 189, 248, 0.18), transparent 55%),
+    radial-gradient(120% 100% at 100% 100%, rgba(43, 108, 244, 0.16), transparent 60%),
+    linear-gradient(180deg, rgba(239, 248, 255, 0.97), rgba(230, 241, 255, 0.94));
+}
+
+.contact-form-embed {
+  display: block;
+  width: 100%;
+  height: 980px;
+  min-height: 980px;
+  border: 0;
+  border-radius: 12px;
+  background: #fff;
+}
+
+@media (max-width: 980px) {
+  .contact-form-embed {
+    height: 1100px;
+    min-height: 1100px;
+  }
+}
+
 @media (max-width: 760px) {
   .service-nav {
     display: none;
+  }
+
+  .contact-form-embed {
+    height: 1240px;
+    min-height: 1240px;
   }
 
   .section {
