@@ -1044,6 +1044,61 @@ body.menu-open .back-to-top {
   max-width: 19ch;
 }
 
+.service-detail-page .service-feature-band,
+.service-detail-page .service-snapshot-band,
+.service-detail-page .service-value-band,
+.service-detail-page .service-process-band,
+.service-detail-page .service-scope-band {
+  position: relative;
+  border-top: 1px solid rgba(20, 49, 95, 0.16);
+  border-bottom: 1px solid rgba(20, 49, 95, 0.12);
+}
+
+.service-detail-page .service-feature-band {
+  background:
+    radial-gradient(120% 130% at 100% 0%, rgba(73, 152, 243, 0.17), transparent 62%),
+    linear-gradient(180deg, rgba(247, 252, 255, 0.97), rgba(238, 247, 255, 0.92));
+}
+
+.service-detail-page .service-snapshot-band {
+  background:
+    radial-gradient(120% 130% at 0% 10%, rgba(87, 163, 241, 0.16), transparent 62%),
+    linear-gradient(180deg, rgba(241, 249, 255, 0.96), rgba(232, 243, 255, 0.9));
+}
+
+.service-detail-page .service-value-band {
+  background:
+    radial-gradient(130% 120% at 100% 12%, rgba(79, 177, 196, 0.16), transparent 62%),
+    linear-gradient(180deg, rgba(236, 246, 255, 0.96), rgba(227, 240, 255, 0.9));
+}
+
+.service-detail-page .service-process-band {
+  background:
+    radial-gradient(120% 130% at 8% 0%, rgba(68, 143, 234, 0.14), transparent 64%),
+    linear-gradient(180deg, rgba(244, 250, 255, 0.95), rgba(234, 244, 255, 0.9));
+}
+
+.service-detail-page .service-scope-band {
+  background:
+    radial-gradient(120% 120% at 100% 0%, rgba(70, 157, 235, 0.14), transparent 64%),
+    linear-gradient(180deg, rgba(239, 248, 255, 0.96), rgba(230, 241, 255, 0.9));
+}
+
+.service-detail-page .service-feature-band::before,
+.service-detail-page .service-snapshot-band::before,
+.service-detail-page .service-value-band::before,
+.service-detail-page .service-process-band::before,
+.service-detail-page .service-scope-band::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 3px;
+  background: linear-gradient(90deg, rgba(44, 108, 244, 0.14), rgba(52, 181, 232, 0.26), rgba(44, 108, 244, 0.14));
+  pointer-events: none;
+}
+
 .services-accordion {
   display: grid;
   gap: 12px;
