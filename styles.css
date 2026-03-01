@@ -271,13 +271,13 @@ strong {
 }
 
 .button::after {
-  --trace-thickness: 2px;
-  --trace-span: 34%;
+  --trace-thickness: 3px;
+  --trace-span: 40%;
   content: "";
   position: absolute;
   inset: -3px;
   border-radius: inherit;
-  border: var(--trace-thickness) solid var(--btn-trace-start);
+  border: var(--trace-thickness) solid var(--btn-trace-end);
   opacity: 0;
   transform: scale(0.98);
   clip-path: inset(
@@ -286,6 +286,7 @@ strong {
     round 999px
   );
   transition: opacity 0.22s ease, transform 0.24s ease;
+  filter: drop-shadow(0 0 6px rgba(43, 108, 244, 0.58));
   pointer-events: none;
 }
 
@@ -297,26 +298,26 @@ strong {
 .button:focus-visible::after {
   opacity: 1;
   transform: scale(1);
-  animation: buttonBorderTrace 1.24s linear infinite;
+  animation: buttonBorderTrace 1.35s linear infinite;
 }
 
 @keyframes buttonBorderTrace {
   0% {
     clip-path: inset(0 calc(100% - var(--trace-span)) calc(100% - var(--trace-thickness)) 0 round 999px);
   }
-  24.99% {
+  24.999% {
     clip-path: inset(0 0 calc(100% - var(--trace-thickness)) calc(100% - var(--trace-span)) round 999px);
   }
   25% {
     clip-path: inset(0 0 calc(100% - var(--trace-span)) calc(100% - var(--trace-thickness)) round 999px);
   }
-  49.99% {
+  49.999% {
     clip-path: inset(calc(100% - var(--trace-span)) 0 0 calc(100% - var(--trace-thickness)) round 999px);
   }
   50% {
     clip-path: inset(calc(100% - var(--trace-thickness)) calc(100% - var(--trace-span)) 0 0 round 999px);
   }
-  74.99% {
+  74.999% {
     clip-path: inset(calc(100% - var(--trace-thickness)) 0 0 calc(100% - var(--trace-span)) round 999px);
   }
   75% {
@@ -4070,13 +4071,13 @@ body.menu-open .site-header .top > :not(.nav-links) {
 }
 
 .site-header .menu-links-col .menu-cta-btn::after {
-  --trace-thickness: 2px;
-  --trace-span: 36%;
+  --trace-thickness: 3px;
+  --trace-span: 42%;
   content: "";
   position: absolute;
   inset: -4px;
   border-radius: inherit;
-  border: var(--trace-thickness) solid rgba(186, 230, 253, 0.92);
+  border: var(--trace-thickness) solid rgba(255, 255, 255, 0.96);
   opacity: 0;
   transform: scale(0.98);
   clip-path: inset(
@@ -4085,6 +4086,7 @@ body.menu-open .site-header .top > :not(.nav-links) {
     round 999px
   );
   transition: opacity 0.22s ease, transform 0.24s ease;
+  filter: drop-shadow(0 0 7px rgba(186, 230, 253, 0.85));
   pointer-events: none;
 }
 
@@ -4115,7 +4117,7 @@ body.menu-open .site-header .top > :not(.nav-links) {
 .site-header .menu-links-col .menu-cta-btn:focus-visible::after {
   opacity: 1;
   transform: scale(1);
-  animation: buttonBorderTrace 1.24s linear infinite;
+  animation: buttonBorderTrace 1.35s linear infinite;
 }
 
 .site-header .menu-links-col .menu-cta-btn:hover span:last-child,
