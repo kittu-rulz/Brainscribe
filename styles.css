@@ -258,6 +258,13 @@ strong {
   justify-content: center;
   --btn-trace-start: rgba(43, 108, 244, 0.94);
   --btn-trace-end: rgba(124, 194, 255, 0.94);
+  --btn-trace-gradient: linear-gradient(
+    110deg,
+    rgba(67, 124, 245, 0.96) 0%,
+    rgba(124, 194, 255, 0.96) 52%,
+    rgba(67, 124, 245, 0.96) 100%
+  );
+  --btn-trace-glow: rgba(43, 108, 244, 0.58);
   border-radius: 999px;
   padding: 11px 18px;
   font-weight: 700;
@@ -278,6 +285,8 @@ strong {
   inset: -3px;
   border-radius: inherit;
   border: var(--trace-thickness) solid var(--btn-trace-end);
+  background-size: 220% 100%;
+  background-position: 0% 50%;
   opacity: 0;
   transform: scale(0.98);
   clip-path: inset(
@@ -286,8 +295,20 @@ strong {
     round 999px
   );
   transition: opacity 0.22s ease, transform 0.24s ease;
-  filter: drop-shadow(0 0 6px rgba(43, 108, 244, 0.58));
+  filter: drop-shadow(0 0 6px var(--btn-trace-glow));
   pointer-events: none;
+}
+
+@supports ((-webkit-mask-composite: xor) or (mask-composite: exclude)) {
+  .button::after {
+    border: 0;
+    padding: var(--trace-thickness);
+    background: var(--btn-trace-gradient);
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    mask-composite: exclude;
+  }
 }
 
 .button:hover {
@@ -298,7 +319,7 @@ strong {
 .button:focus-visible::after {
   opacity: 1;
   transform: scale(1);
-  animation: buttonBorderTrace 1.35s linear infinite;
+  animation: buttonBorderTrace 1.35s linear infinite, buttonTraceShift 1.9s linear infinite;
 }
 
 @keyframes buttonBorderTrace {
@@ -328,12 +349,29 @@ strong {
   }
 }
 
+@keyframes buttonTraceShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 220% 50%;
+  }
+}
+
 .button:focus-visible {
   outline: 2px solid var(--sky-light);
   outline-offset: 2px;
 }
 
 .button.primary {
+  --btn-trace-gradient: linear-gradient(
+    112deg,
+    rgba(255, 106, 108, 0.95) 4%,
+    rgba(255, 204, 96, 0.96) 34%,
+    rgba(105, 222, 145, 0.95) 66%,
+    rgba(166, 120, 255, 0.96) 100%
+  );
+  --btn-trace-glow: rgba(166, 120, 255, 0.52);
   color: #fff;
   background: linear-gradient(122deg, var(--navy), var(--cobalt));
   box-shadow: 0 14px 24px -18px rgba(25, 52, 108, 0.95);
@@ -346,6 +384,13 @@ strong {
 .button.secondary {
   --btn-trace-start: rgba(25, 52, 108, 0.86);
   --btn-trace-end: rgba(43, 108, 244, 0.86);
+  --btn-trace-gradient: linear-gradient(
+    110deg,
+    rgba(27, 74, 165, 0.94) 0%,
+    rgba(68, 150, 255, 0.94) 52%,
+    rgba(27, 74, 165, 0.94) 100%
+  );
+  --btn-trace-glow: rgba(43, 108, 244, 0.52);
   color: var(--navy);
   border-color: rgba(25, 52, 108, 0.24);
   background: rgba(255, 255, 255, 0.72);
