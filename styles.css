@@ -2687,6 +2687,11 @@ body:not(.home-page) .page-hero .hero-copy {
   background-position: center 38%;
 }
 
+.services-overview-page .sub-hero .sub-hero-media {
+  background-image: url("images/home-core-services.jpg");
+  background-position: center 34%;
+}
+
 .service-custom-page .sub-hero .sub-hero-media {
   background-image: url("images/services-custom-app.jpg");
   background-position: center 38%;
@@ -2905,6 +2910,10 @@ body:not(.home-page) .page-hero .hero-copy {
 
   .services-page .sub-hero .sub-hero-media {
     background-position: center 30%;
+  }
+
+  .services-overview-page .sub-hero .sub-hero-media {
+    background-position: center 28%;
   }
 
   .contact-page .sub-hero .sub-hero-media {
