@@ -47,9 +47,9 @@
     <rect x="50" y="514" width="190" height="42" rx="21" fill="#2b6cf4"/>
   </g>
 
-  <g transform="translate(980 210)" filter="url(#softShadow)">
-    <path d="M180 0 330 58v170c0 135-100 236-150 272C130 464 30 363 30 228V58L180 0Z" fill="#e4f3ff" opacity="0.93"/>
-    <path d="M180 48 285 88v134c0 95-66 170-105 202-39-32-105-107-105-202V88l105-40Z" fill="#2b6cf4" opacity="0.92"/>
-    <path d="M127 223l37 38 72-85" fill="none" stroke="#dff1ff" stroke-width="22" stroke-linecap="round" stroke-linejoin="round"/>
+  <g transform="translate(980 210)" filter="url(#softShadow)" opacity="0.68">
+    <path d="M180 0 330 58v170c0 135-100 236-150 272C130 464 30 363 30 228V58L180 0Z" fill="#dbeeff" opacity="0.64"/>
+    <path d="M180 48 285 88v134c0 95-66 170-105 202-39-32-105-107-105-202V88l105-40Z" fill="#4f83d2" opacity="0.5"/>
+    <path d="M127 223l37 38 72-85" fill="none" stroke="#f2f8ff" stroke-opacity="0.62" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
 </svg>
