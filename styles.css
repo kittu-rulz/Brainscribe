@@ -969,15 +969,21 @@ body.menu-open .back-to-top {
   display: grid;
   grid-template-columns: minmax(290px, 0.92fr) minmax(0, 1.08fr);
   gap: 14px;
-  align-items: stretch;
+  align-items: start;
 }
 
 .service-detail-copy {
   height: 100%;
+  align-self: start;
 }
 
-.service-detail-copy .button {
-  margin-top: 14px;
+.service-detail-media {
+  align-self: start;
+}
+
+.service-detail-copy.service-carousel-copy .button {
+  margin-top: 24px;
+  padding-top: 2px;
 }
 
 .service-detail-highlights {
