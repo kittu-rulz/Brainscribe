@@ -89,46 +89,18 @@
 
     <section class="services-carousel services-showcase" id="servicesCarousel" aria-label="Services overview and details">
       <div class="container">
-        <div class="services-snapshot-grid" id="servicesSnapshotGrid">
-          <button class="service-snapshot-card is-active" type="button" data-service-target="microsoft" aria-controls="microsoft" aria-expanded="true">
-            <span class="service-snapshot-no">01</span>
-            <h3>Custom Application</h3>
-            <p>.NET, SharePoint, and SQL Server solutions for enterprise workflows.</p>
-            <span class="service-snapshot-meta">Microsoft Stack</span>
-          </button>
-          <button class="service-snapshot-card" type="button" data-service-target="moodle" aria-controls="moodle" aria-expanded="false">
-            <span class="service-snapshot-no">02</span>
-            <h3>Moodle LMS</h3>
-            <p>Setup, customization, plugins, and integrations for modern learning platforms.</p>
-            <span class="service-snapshot-meta">LMS Services</span>
-          </button>
-          <button class="service-snapshot-card" type="button" data-service-target="staffing" aria-controls="staffing" aria-expanded="false">
-            <span class="service-snapshot-no">03</span>
-            <h3>IT Staffing</h3>
-            <p>Contract, permanent, and contract-to-hire talent across technology stacks.</p>
-            <span class="service-snapshot-meta">Talent Solutions</span>
-          </button>
-          <button class="service-snapshot-card" type="button" data-service-target="xdt" aria-controls="xdt" aria-expanded="false">
-            <span class="service-snapshot-no">04</span>
-            <h3>Extended Development</h3>
-            <p>Dedicated offshore teams aligned with your process, tools, and delivery goals.</p>
-            <span class="service-snapshot-meta">XDT Model</span>
-          </button>
-          <button class="service-snapshot-card" type="button" data-service-target="hosting" aria-controls="hosting" aria-expanded="false">
-            <span class="service-snapshot-no">05</span>
-            <h3>Hosting & Infrastructure</h3>
-            <p>Managed Azure and AWS environments focused on reliability and security.</p>
-            <span class="service-snapshot-meta">Cloud Ops</span>
-          </button>
-          <button class="service-snapshot-card" type="button" data-service-target="instructional" aria-controls="instructional" aria-expanded="false">
-            <span class="service-snapshot-no">06</span>
-            <h3>Instructional & Graphic</h3>
-            <p>Instructional design and media production for high-impact digital learning.</p>
-            <span class="service-snapshot-meta">eLearning Design</span>
-          </button>
-        </div>
-        <div class="services-detail-panels" id="servicesDetailPanels">
-              <article class="service-detail-panel is-active service-carousel-slide content-only" id="microsoft" data-service-index="0" aria-hidden="false">
+        <div class="services-accordion" id="servicesAccordion">
+              <article class="service-accordion-item is-open" id="microsoft" data-service-index="0">
+                <button class="service-accordion-trigger" type="button" aria-expanded="true" aria-controls="microsoft-panel">
+                  <span class="service-accordion-index">01</span>
+                  <span class="service-accordion-label">
+                    <strong>Custom Application Development</strong>
+                    <small>Microsoft Technologies — .NET, SharePoint &amp; SQL Server</small>
+                  </span>
+                  <span class="service-accordion-icon" aria-hidden="true">+</span>
+                </button>
+                <div class="service-accordion-panel" id="microsoft-panel">
+                  <div class="service-carousel-slide content-only">
                 <div class="service-overview-card panel reveal">
                   <h3 class="service-mini-title">🛠️ Microsoft Technology Solutions</h3>
                   <p>Enterprise-grade applications built on the world's most trusted enterprise platform — Microsoft .NET, SharePoint, and SQL Server.</p>
@@ -178,9 +150,21 @@
                   </div>
                   <a class="button primary" href="contact.html">Discuss Your Requirements</a>
                 </div>
+                  </div>
+                </div>
               </article>
 
-              <article class="service-detail-panel service-carousel-slide content-only reverse" id="moodle" data-service-index="1" aria-hidden="true">
+              <article class="service-accordion-item" id="moodle" data-service-index="1">
+                <button class="service-accordion-trigger" type="button" aria-expanded="false" aria-controls="moodle-panel">
+                  <span class="service-accordion-index">02</span>
+                  <span class="service-accordion-label">
+                    <strong>Moodle LMS Solutions</strong>
+                    <small>Development, Customisation &amp; Integration</small>
+                  </span>
+                  <span class="service-accordion-icon" aria-hidden="true">+</span>
+                </button>
+                <div class="service-accordion-panel" id="moodle-panel">
+                  <div class="service-carousel-slide content-only reverse">
                 <div class="service-overview-card panel reveal reveal-delay-2">
                   <h3 class="service-mini-title">📚 Moodle LMS Services</h3>
                   <p>Powering modern learning experiences for schools, universities, and corporate training teams across India and globally.</p>
@@ -231,9 +215,21 @@
                   </div>
                   <a class="button primary" href="contact.html">Discuss Your Requirements</a>
                 </div>
+                  </div>
+                </div>
               </article>
 
-              <article class="service-detail-panel service-carousel-slide content-only" id="staffing" data-service-index="2" aria-hidden="true">
+              <article class="service-accordion-item" id="staffing" data-service-index="2">
+                <button class="service-accordion-trigger" type="button" aria-expanded="false" aria-controls="staffing-panel">
+                  <span class="service-accordion-index">03</span>
+                  <span class="service-accordion-label">
+                    <strong>IT Staffing Services</strong>
+                    <small>Skilled Professionals Across All Technologies</small>
+                  </span>
+                  <span class="service-accordion-icon" aria-hidden="true">+</span>
+                </button>
+                <div class="service-accordion-panel" id="staffing-panel">
+                  <div class="service-carousel-slide content-only">
                 <div class="service-overview-card panel reveal">
                   <h3 class="service-mini-title">👥 IT Staffing Services</h3>
                   <p>Connecting organisations with top IT talent — across all technologies, experience levels, and engagement models.</p>
@@ -283,9 +279,21 @@
                   </div>
                   <a class="button primary" href="contact.html">Discuss Your Requirements</a>
                 </div>
+                  </div>
+                </div>
               </article>
 
-              <article class="service-detail-panel service-carousel-slide content-only reverse" id="xdt" data-service-index="3" aria-hidden="true">
+              <article class="service-accordion-item" id="xdt" data-service-index="3">
+                <button class="service-accordion-trigger" type="button" aria-expanded="false" aria-controls="xdt-panel">
+                  <span class="service-accordion-index">04</span>
+                  <span class="service-accordion-label">
+                    <strong>Extended Development Teams (XDT)</strong>
+                    <small>Dedicated Offshore Teams That Work Like Your Own</small>
+                  </span>
+                  <span class="service-accordion-icon" aria-hidden="true">+</span>
+                </button>
+                <div class="service-accordion-panel" id="xdt-panel">
+                  <div class="service-carousel-slide content-only reverse">
                 <div class="service-overview-card panel reveal reveal-delay-2">
                   <h3 class="service-mini-title">🌐 Your Offshore Engineering Team</h3>
                   <p>A fully dedicated development team that thinks, works, and delivers like your own — from India, at a fraction of the cost.</p>
@@ -345,9 +353,21 @@
                   </div>
                   <a class="button primary" href="contact.html">Discuss Your Requirements</a>
                 </div>
+                  </div>
+                </div>
               </article>
 
-              <article class="service-detail-panel service-carousel-slide content-only" id="hosting" data-service-index="4" aria-hidden="true">
+              <article class="service-accordion-item" id="hosting" data-service-index="4">
+                <button class="service-accordion-trigger" type="button" aria-expanded="false" aria-controls="hosting-panel">
+                  <span class="service-accordion-index">05</span>
+                  <span class="service-accordion-label">
+                    <strong>Hosting &amp; Infrastructure Management</strong>
+                    <small>Azure &amp; AWS Cloud Services</small>
+                  </span>
+                  <span class="service-accordion-icon" aria-hidden="true">+</span>
+                </button>
+                <div class="service-accordion-panel" id="hosting-panel">
+                  <div class="service-carousel-slide content-only">
                 <div class="service-overview-card panel reveal">
                   <h3 class="service-mini-title">☁️ Hosting &amp; Infrastructure Management</h3>
                   <p>Reliable, secure, and optimised cloud infrastructure on Azure and AWS — managed proactively so you never have to worry.</p>
@@ -398,9 +418,21 @@
                   </div>
                   <a class="button primary" href="contact.html">Discuss Your Requirements</a>
                 </div>
+                  </div>
+                </div>
               </article>
 
-              <article class="service-detail-panel service-carousel-slide content-only reverse" id="instructional" data-service-index="5" aria-hidden="true">
+              <article class="service-accordion-item" id="instructional" data-service-index="5">
+                <button class="service-accordion-trigger" type="button" aria-expanded="false" aria-controls="instructional-panel">
+                  <span class="service-accordion-index">06</span>
+                  <span class="service-accordion-label">
+                    <strong>Instructional &amp; Graphic Design</strong>
+                    <small>eLearning Content &amp; Visual Design Services</small>
+                  </span>
+                  <span class="service-accordion-icon" aria-hidden="true">+</span>
+                </button>
+                <div class="service-accordion-panel" id="instructional-panel">
+                  <div class="service-carousel-slide content-only reverse">
                 <div class="service-overview-card panel reveal reveal-delay-2">
                   <h3 class="service-mini-title">🎨 eLearning Design Studio</h3>
                   <p>Creating learning experiences that engage, inspire, and produce measurable results — from concept to SCORM package.</p>
@@ -451,6 +483,8 @@
                     <span class="benefit-pill">Video Production</span>
                   </div>
                   <a class="button primary" href="contact.html">Discuss Your Requirements</a>
+                </div>
+                  </div>
                 </div>
               </article>
             </div>

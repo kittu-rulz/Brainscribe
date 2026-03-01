@@ -823,40 +823,37 @@
   });
 
   const serviceLinks = [...document.querySelectorAll(".service-nav a[href^='#']")];
-  const serviceSnapshotCards = [...document.querySelectorAll(".service-snapshot-card[data-service-target]")];
-  const serviceDetailPanels = [...document.querySelectorAll(".service-detail-panel[id]")];
+  const serviceAccordionItems = [...document.querySelectorAll(".service-accordion-item[id]")];
 
-  if (serviceDetailPanels.length) {
-    const detailById = new Map(serviceDetailPanels.map((panel) => [panel.id, panel]));
-    const validIds = [...detailById.keys()];
-    let activeId = validIds[0];
+  if (serviceAccordionItems.length) {
+    const itemById = new Map(serviceAccordionItems.map((item) => [item.id, item]));
+    const firstId = serviceAccordionItems[0].id;
+    let activeId = firstId;
 
     const setActiveService = (id, options = {}) => {
-      if (!detailById.has(id)) return;
+      if (!itemById.has(id)) return;
       activeId = id;
-      const scrollToDetail = Boolean(options.scrollToDetail);
+      const scrollToItem = Boolean(options.scrollToItem);
 
       serviceLinks.forEach((link) => {
         const targetId = link.getAttribute("href")?.slice(1);
         link.classList.toggle("is-active", targetId === id);
       });
 
-      serviceSnapshotCards.forEach((card) => {
-        const isActive = card.getAttribute("data-service-target") === id;
-        card.classList.toggle("is-active", isActive);
-        card.setAttribute("aria-expanded", String(isActive));
+      serviceAccordionItems.forEach((item) => {
+        const isActive = item.id === id;
+        item.classList.toggle("is-open", isActive);
+
+        const trigger = item.querySelector(".service-accordion-trigger");
+        if (trigger) {
+          trigger.setAttribute("aria-expanded", String(isActive));
+        }
       });
 
-      serviceDetailPanels.forEach((panel) => {
-        const isActive = panel.id === id;
-        panel.classList.toggle("is-active", isActive);
-        panel.setAttribute("aria-hidden", String(!isActive));
-      });
-
-      if (scrollToDetail && window.innerWidth <= 980) {
-        const panel = detailById.get(id);
-        if (!panel) return;
-        panel.scrollIntoView({
+      if (scrollToItem) {
+        const item = itemById.get(id);
+        if (!item) return;
+        item.scrollIntoView({
           behavior: reduceMotion ? "auto" : "smooth",
           block: "start"
         });
@@ -866,30 +863,34 @@
     serviceLinks.forEach((link) => {
       link.addEventListener("click", (event) => {
         const id = link.getAttribute("href")?.slice(1);
-        if (!id || !detailById.has(id)) return;
+        if (!id || !itemById.has(id)) return;
         event.preventDefault();
-        setActiveService(id, { scrollToDetail: true });
+        setActiveService(id, { scrollToItem: true });
+        if (history.replaceState) history.replaceState(null, "", `#${id}`);
       });
     });
 
-    serviceSnapshotCards.forEach((card) => {
-      card.addEventListener("click", () => {
-        const id = card.getAttribute("data-service-target");
-        if (!id || !detailById.has(id)) return;
-        setActiveService(id, { scrollToDetail: true });
+    serviceAccordionItems.forEach((item) => {
+      const trigger = item.querySelector(".service-accordion-trigger");
+      if (!trigger) return;
+
+      trigger.addEventListener("click", () => {
+        if (item.id === activeId) return;
+        setActiveService(item.id, { scrollToItem: window.innerWidth <= 980 });
+        if (history.replaceState) history.replaceState(null, "", `#${item.id}`);
       });
     });
 
     const hashId = window.location.hash ? window.location.hash.slice(1) : "";
-    if (hashId && detailById.has(hashId)) {
+    if (hashId && itemById.has(hashId)) {
       setActiveService(hashId);
     } else {
-      setActiveService(activeId);
+      setActiveService(firstId);
     }
 
     window.addEventListener("hashchange", () => {
       const id = window.location.hash ? window.location.hash.slice(1) : "";
-      if (!id || !detailById.has(id)) return;
+      if (!id || !itemById.has(id)) return;
       setActiveService(id);
     });
   }
