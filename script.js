@@ -304,6 +304,98 @@
     window.addEventListener("scroll", syncHeaderState, { passive: true });
   }
 
+  const syncBrandWidth = (containerSelector, wordmarkSelector, taglineSelector, adjustLetterSpacing = true) => {
+    const brands = document.querySelectorAll(containerSelector);
+    brands.forEach((brand) => {
+      const wordmark = brand.querySelector(wordmarkSelector);
+      const tagline = brand.querySelector(taglineSelector);
+      if (!(wordmark instanceof HTMLElement) || !(tagline instanceof HTMLElement)) return;
+
+      if (adjustLetterSpacing) {
+        wordmark.style.removeProperty("letter-spacing");
+      }
+      wordmark.style.removeProperty("width");
+      tagline.style.removeProperty("width");
+
+      const chars = (wordmark.textContent || "").trim().length;
+      const gaps = Math.max(chars - 1, 1);
+
+      if (adjustLetterSpacing) {
+        let letterSpacingPx = (() => {
+          const parsed = parseFloat(window.getComputedStyle(wordmark).letterSpacing);
+          return Number.isFinite(parsed) ? parsed : 0;
+        })();
+
+        // Iterate a few times to converge despite sub-pixel rounding.
+        for (let i = 0; i < 4; i += 1) {
+          const wordWidth = wordmark.getBoundingClientRect().width;
+          const tagWidth = tagline.getBoundingClientRect().width;
+          if (!wordWidth || !tagWidth) return;
+
+          const delta = tagWidth - wordWidth;
+          if (Math.abs(delta) <= 0.05) break;
+
+          letterSpacingPx += delta / gaps;
+          wordmark.style.letterSpacing = `${letterSpacingPx.toFixed(4)}px`;
+        }
+      }
+
+      // Lock both rows to the same rendered width, especially useful in footer blocks.
+      const finalWordWidth = wordmark.getBoundingClientRect().width;
+      const finalTagWidth = tagline.getBoundingClientRect().width;
+      if (finalWordWidth && finalTagWidth) {
+        const sharedWidth = Math.max(finalWordWidth, finalTagWidth);
+        wordmark.style.width = `${sharedWidth.toFixed(3)}px`;
+        tagline.style.width = `${sharedWidth.toFixed(3)}px`;
+      }
+    });
+  };
+
+  const syncNavbarBrandWidth = () => {
+    syncBrandWidth(".center-brand .brand-copy", ".brand-wordmark", ".brand-tagline");
+  };
+
+  const syncFooterBrandWidth = () => {
+    syncBrandWidth(".footer-brand-copy", ".footer-brand-name", ".footer-brand-tagline", false);
+  };
+
+  const syncAllBrandWidths = () => {
+    syncNavbarBrandWidth();
+    syncFooterBrandWidth();
+  };
+
+  syncAllBrandWidths();
+  let navbarBrandRaf = 0;
+  window.addEventListener(
+    "resize",
+    () => {
+      if (navbarBrandRaf) cancelAnimationFrame(navbarBrandRaf);
+      navbarBrandRaf = requestAnimationFrame(() => {
+        syncAllBrandWidths();
+        navbarBrandRaf = 0;
+      });
+    },
+    { passive: true }
+  );
+
+  if (document.fonts && document.fonts.ready) {
+    document.fonts.ready
+      .then(() => {
+        syncAllBrandWidths();
+      })
+      .catch(() => {
+        // Ignore font readiness errors and keep current layout.
+      });
+  }
+
+  window.addEventListener(
+    "load",
+    () => {
+      syncAllBrandWidths();
+    },
+    { once: true }
+  );
+
   const backToTopBtn = (() => {
     let node = document.getElementById("backToTop");
     if (node) return node;
