@@ -47,22 +47,40 @@
   let themeToggleBtn = null;
 
   if (topSpacer) {
+    topSpacer.removeAttribute("aria-hidden");
     topSpacer.textContent = "";
     themeToggleBtn = document.createElement("button");
     themeToggleBtn.type = "button";
-    themeToggleBtn.className = "theme-toggle";
+    themeToggleBtn.className = "theme-toggle toggle";
     themeToggleBtn.setAttribute("aria-live", "polite");
     themeToggleBtn.innerHTML = `
-      <span class="theme-toggle-icon theme-toggle-icon-sun" aria-hidden="true">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
-          <circle cx="12" cy="12" r="4.2"></circle>
-          <path d="M12 2.5v2.6M12 18.9v2.6M21.5 12h-2.6M5.1 12H2.5M18.7 5.3l-1.8 1.8M7.1 16.9l-1.8 1.8M18.7 18.7l-1.8-1.8M7.1 7.1 5.3 5.3"></path>
+      <span class="toggle__content" aria-hidden="true">
+        <svg class="toggle__backdrop toggle__backdrop--day" viewBox="0 0 320 120" xmlns="http://www.w3.org/2000/svg">
+          <g class="clouds">
+            <path d="M46 86h228c18 0 32-13 32-30s-14-30-32-30c-4 0-8 .8-12 2-8-12-22-20-38-20-8 0-16 2-22 6-9-9-21-14-34-14-19 0-36 10-45 26-4-1-8-2-13-2-15 0-29 8-36 20-3-1-6-1-9-1-18 0-32 13-32 30s14 30 32 30z"/>
+          </g>
         </svg>
-      </span>
-      <span class="theme-toggle-icon theme-toggle-icon-moon" aria-hidden="true">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
-          <path d="M21 12.8A8.8 8.8 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"></path>
+        <svg class="toggle__backdrop toggle__backdrop--night stars" viewBox="0 0 320 120" xmlns="http://www.w3.org/2000/svg">
+          <g><circle cx="30" cy="22" r="2.4"/></g>
+          <g><circle cx="72" cy="14" r="1.9"/></g>
+          <g><circle cx="116" cy="26" r="2.2"/></g>
+          <g><circle cx="164" cy="16" r="1.8"/></g>
+          <g><circle cx="214" cy="26" r="2.1"/></g>
+          <g><circle cx="258" cy="14" r="1.9"/></g>
+          <g><circle cx="292" cy="24" r="2.3"/></g>
         </svg>
+        <span class="toggle__indicator-wrapper">
+          <span class="toggle__indicator">
+            <span class="toggle__star">
+              <span class="sun"></span>
+              <span class="moon">
+                <span class="moon__crater"></span>
+                <span class="moon__crater"></span>
+                <span class="moon__crater"></span>
+              </span>
+            </span>
+          </span>
+        </span>
       </span>
     `;
 
@@ -77,7 +95,6 @@
       themeToggleBtn.setAttribute("aria-pressed", String(darkActive));
       themeToggleBtn.setAttribute("aria-label", label);
       themeToggleBtn.setAttribute("title", label);
-      themeToggleBtn.classList.toggle("is-dark", darkActive);
     };
 
     themeToggleBtn.addEventListener("click", () => {
