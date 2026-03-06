@@ -1,5 +1,111 @@
 (() => {
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const rootNode = document.documentElement;
+  const themeStorageKey = "bs-theme";
+  const themeChangeEvent = "bs-theme-change";
+  const themeDark = "dark";
+  const themeLight = "light";
+
+  const getStoredTheme = () => {
+    try {
+      const saved = window.localStorage.getItem(themeStorageKey);
+      return saved === themeDark || saved === themeLight ? saved : null;
+    } catch {
+      return null;
+    }
+  };
+
+  let storedTheme = getStoredTheme();
+
+  const applyTheme = (nextTheme, persist = false) => {
+    const normalizedTheme = nextTheme === themeDark ? themeDark : themeLight;
+    rootNode.dataset.theme = normalizedTheme;
+    rootNode.style.colorScheme = normalizedTheme;
+
+    if (persist) {
+      try {
+        window.localStorage.setItem(themeStorageKey, normalizedTheme);
+        storedTheme = normalizedTheme;
+      } catch {
+        // Ignore storage write issues and continue with in-memory theme state.
+      }
+    }
+
+    document.dispatchEvent(
+      new CustomEvent(themeChangeEvent, {
+        detail: { theme: normalizedTheme }
+      })
+    );
+  };
+
+  const isDarkTheme = () => rootNode.dataset.theme === themeDark;
+
+  // Default to light theme unless the user has explicitly chosen one.
+  applyTheme(storedTheme || themeLight);
+
+  const topSpacer = document.querySelector(".site-header .top-spacer");
+  let themeToggleBtn = null;
+
+  if (topSpacer) {
+    topSpacer.removeAttribute("aria-hidden");
+    topSpacer.textContent = "";
+    themeToggleBtn = document.createElement("button");
+    themeToggleBtn.type = "button";
+    themeToggleBtn.className = "theme-toggle toggle";
+    themeToggleBtn.setAttribute("aria-live", "polite");
+    themeToggleBtn.innerHTML = `
+      <span class="toggle__content" aria-hidden="true">
+        <svg class="toggle__backdrop toggle__backdrop--day" viewBox="0 0 320 120" xmlns="http://www.w3.org/2000/svg">
+          <g class="clouds">
+            <path d="M46 86h228c18 0 32-13 32-30s-14-30-32-30c-4 0-8 .8-12 2-8-12-22-20-38-20-8 0-16 2-22 6-9-9-21-14-34-14-19 0-36 10-45 26-4-1-8-2-13-2-15 0-29 8-36 20-3-1-6-1-9-1-18 0-32 13-32 30s14 30 32 30z"/>
+          </g>
+        </svg>
+        <svg class="toggle__backdrop toggle__backdrop--night stars" viewBox="0 0 320 120" xmlns="http://www.w3.org/2000/svg">
+          <g><circle cx="30" cy="22" r="2.4"/></g>
+          <g><circle cx="72" cy="14" r="1.9"/></g>
+          <g><circle cx="116" cy="26" r="2.2"/></g>
+          <g><circle cx="164" cy="16" r="1.8"/></g>
+          <g><circle cx="214" cy="26" r="2.1"/></g>
+          <g><circle cx="258" cy="14" r="1.9"/></g>
+          <g><circle cx="292" cy="24" r="2.3"/></g>
+        </svg>
+        <span class="toggle__indicator-wrapper">
+          <span class="toggle__indicator">
+            <span class="toggle__star">
+              <span class="sun"></span>
+              <span class="moon">
+                <span class="moon__crater"></span>
+                <span class="moon__crater"></span>
+                <span class="moon__crater"></span>
+              </span>
+            </span>
+          </span>
+        </span>
+      </span>
+    `;
+
+    topSpacer.appendChild(themeToggleBtn);
+
+    const syncThemeToggle = () => {
+      if (!themeToggleBtn) return;
+      const darkActive = isDarkTheme();
+      const nextTheme = darkActive ? themeLight : themeDark;
+      const label = `Switch to ${nextTheme} theme`;
+
+      themeToggleBtn.setAttribute("aria-pressed", String(darkActive));
+      themeToggleBtn.setAttribute("aria-label", label);
+      themeToggleBtn.setAttribute("title", label);
+    };
+
+    themeToggleBtn.addEventListener("click", () => {
+      const nextTheme = isDarkTheme() ? themeLight : themeDark;
+      applyTheme(nextTheme, true);
+      syncThemeToggle();
+    });
+
+    document.addEventListener(themeChangeEvent, syncThemeToggle);
+    syncThemeToggle();
+  }
 
   const canUseCustomCursor = window.matchMedia("(pointer:fine)").matches && !reduceMotion;
 
@@ -95,14 +201,14 @@
       const overInteractive = !!event.target.closest(interactiveSelector);
       setHidden(overTextField);
       setHover(overInteractive && !overTextField);
-      setTone(!!event.target.closest(darkZoneSelector));
+      setTone(isDarkTheme() || !!event.target.closest(darkZoneSelector));
     };
 
     const onLeave = () => {
       setVisible(false);
       setHover(false);
       setHidden(false);
-      setTone(false);
+      setTone(isDarkTheme());
     };
 
     const onDown = () => {
@@ -115,7 +221,7 @@
       dot.classList.remove("is-down");
     };
 
-    setTone(false);
+    setTone(isDarkTheme());
     render();
     window.addEventListener("pointermove", onMove, { passive: true });
     window.addEventListener("pointerdown", onDown);
@@ -123,6 +229,9 @@
     window.addEventListener("pointercancel", onUp);
     window.addEventListener("blur", onLeave);
     document.addEventListener("pointerleave", onLeave);
+    document.addEventListener(themeChangeEvent, () => {
+      setTone(isDarkTheme());
+    });
 
     window.addEventListener("beforeunload", () => {
       if (raf) cancelAnimationFrame(raf);
