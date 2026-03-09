@@ -4680,10 +4680,7 @@ body {
   --toggle-knob: calc(var(--toggle-height) - (var(--toggle-pad) * 2));
   --toggle-shift: calc(var(--toggle-width) - var(--toggle-knob) - (var(--toggle-pad) * 2));
   --dark: 0;
-  position: fixed;
-  top: calc(12px + env(safe-area-inset-top, 0px));
-  right: clamp(12px, 2vw, 22px);
-  z-index: 82;
+  position: relative;
   width: var(--toggle-width);
   height: var(--toggle-height);
   border: 0;
@@ -4925,11 +4922,7 @@ body {
 
 @media (max-width: 760px) {
   .site-header .theme-toggle {
-    --toggle-width: 50px;
-    top: auto;
-    right: 12px;
-    bottom: calc(14px + env(safe-area-inset-bottom, 0px));
-    z-index: 90;
+    --toggle-width: 54px;
   }
 }
 
