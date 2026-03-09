@@ -57,17 +57,20 @@
       <span class="toggle__content" aria-hidden="true">
         <svg class="toggle__backdrop toggle__backdrop--day" viewBox="0 0 320 120" xmlns="http://www.w3.org/2000/svg">
           <g class="clouds">
-            <path d="M46 86h228c18 0 32-13 32-30s-14-30-32-30c-4 0-8 .8-12 2-8-12-22-20-38-20-8 0-16 2-22 6-9-9-21-14-34-14-19 0-36 10-45 26-4-1-8-2-13-2-15 0-29 8-36 20-3-1-6-1-9-1-18 0-32 13-32 30s14 30 32 30z"/>
+            <path class="cloud cloud--base" d="M46 86h228c18 0 32-13 32-30s-14-30-32-30c-4 0-8 .8-12 2-8-12-22-20-38-20-8 0-16 2-22 6-9-9-21-14-34-14-19 0-36 10-45 26-4-1-8-2-13-2-15 0-29 8-36 20-3-1-6-1-9-1-18 0-32 13-32 30s14 30 32 30z"/>
+            <path class="cloud cloud--highlight" d="M74 70h166c11 0 20-8 20-18s-9-18-20-18c-3 0-6 .5-9 1.5-6-8-16-13-28-13-7 0-13 2-18 5-7-6-16-10-26-10-14 0-27 8-33 20-3-.8-6-1.5-9-1.5-11 0-20 8-20 18s9 18 20 18z"/>
           </g>
         </svg>
         <svg class="toggle__backdrop toggle__backdrop--night stars" viewBox="0 0 320 120" xmlns="http://www.w3.org/2000/svg">
-          <g><circle cx="30" cy="22" r="2.4"/></g>
-          <g><circle cx="72" cy="14" r="1.9"/></g>
-          <g><circle cx="116" cy="26" r="2.2"/></g>
-          <g><circle cx="164" cy="16" r="1.8"/></g>
-          <g><circle cx="214" cy="26" r="2.1"/></g>
-          <g><circle cx="258" cy="14" r="1.9"/></g>
-          <g><circle cx="292" cy="24" r="2.3"/></g>
+          <g class="star star--dot"><circle cx="30" cy="22" r="2.8"/></g>
+          <g class="star star--dot"><circle cx="72" cy="14" r="2.2"/></g>
+          <g class="star star--spark"><path d="M112 26l2.2-5.1 2.2 5.1 5.1 2.2-5.1 2.2-2.2 5.1-2.2-5.1-5.1-2.2z"/></g>
+          <g class="star star--dot"><circle cx="156" cy="15" r="2.1"/></g>
+          <g class="star star--spark"><path d="M198 28l2.4-5.4 2.4 5.4 5.4 2.4-5.4 2.4-2.4 5.4-2.4-5.4-5.4-2.4z"/></g>
+          <g class="star star--dot"><circle cx="236" cy="16" r="2.2"/></g>
+          <g class="star star--dot"><circle cx="270" cy="24" r="2.7"/></g>
+          <g class="star star--dot"><circle cx="300" cy="18" r="2.4"/></g>
+          <g class="star star--dot"><circle cx="54" cy="34" r="1.8"/></g>
         </svg>
         <span class="toggle__indicator-wrapper">
           <span class="toggle__indicator">
