@@ -4709,10 +4709,10 @@ body {
 .site-header .theme-toggle::before,
 .site-header .theme-toggle::after {
   position: absolute;
-  left: 50%;
+  left: var(--tooltip-left, 50%);
   opacity: 0;
   pointer-events: none;
-  transform: translateX(-50%) translateY(-4px);
+  transform: translateX(var(--tooltip-shift-x, -50%)) translateY(-4px);
   transition: opacity 180ms ease, transform 180ms ease;
   z-index: 12;
 }
@@ -4955,12 +4955,22 @@ body {
     0 1px 0 rgba(255, 255, 255, 0.38) inset;
 }
 
-.site-header .theme-toggle:hover::before,
-.site-header .theme-toggle:hover::after,
-.site-header .theme-toggle:focus-visible::before,
-.site-header .theme-toggle:focus-visible::after {
-  opacity: 1;
-  transform: translateX(-50%) translateY(0);
+@media (hover: hover) and (pointer: fine) {
+  .site-header .theme-toggle:hover::before,
+  .site-header .theme-toggle:hover::after,
+  .site-header .theme-toggle:focus-visible::before,
+  .site-header .theme-toggle:focus-visible::after {
+    opacity: 1;
+    transform: translateX(var(--tooltip-shift-x, -50%)) translateY(0);
+  }
+}
+
+@media (hover: none), (pointer: coarse) {
+  .site-header .theme-toggle[data-tooltip-visible="true"]::before,
+  .site-header .theme-toggle[data-tooltip-visible="true"]::after {
+    opacity: 1;
+    transform: translateX(var(--tooltip-shift-x, -50%)) translateY(0);
+  }
 }
 
 .site-header .theme-toggle:focus-visible {
@@ -4975,6 +4985,18 @@ body {
 @media (max-width: 760px) {
   .site-header .theme-toggle {
     --toggle-width: 54px;
+    --tooltip-left: 0%;
+    --tooltip-shift-x: 0%;
+  }
+
+  .site-header .theme-toggle::after {
+    max-width: min(68vw, 200px);
+    white-space: normal;
+    line-height: 1.2;
+  }
+
+  .site-header .theme-toggle::before {
+    left: 14px;
   }
 }
 

@@ -60,6 +60,9 @@
 
   const topSpacer = document.querySelector(".site-header .top-spacer");
   let themeToggleBtn = null;
+  const tapTooltipQuery = window.matchMedia("(hover: none), (pointer: coarse)");
+  const tapTooltipDurationMs = 1200;
+  let tapTooltipTimer = null;
 
   if (topSpacer) {
     topSpacer.removeAttribute("aria-hidden");
@@ -104,6 +107,32 @@
 
     topSpacer.appendChild(themeToggleBtn);
 
+    const clearTapTooltipTimer = () => {
+      if (tapTooltipTimer) {
+        clearTimeout(tapTooltipTimer);
+        tapTooltipTimer = null;
+      }
+    };
+
+    const hideTapTooltip = () => {
+      if (!themeToggleBtn) return;
+      themeToggleBtn.removeAttribute("data-tooltip-visible");
+      clearTapTooltipTimer();
+    };
+
+    const showTapTooltip = () => {
+      if (!themeToggleBtn || !tapTooltipQuery.matches) return;
+      themeToggleBtn.setAttribute("data-tooltip-visible", "true");
+      clearTapTooltipTimer();
+      tapTooltipTimer = setTimeout(() => {
+        hideTapTooltip();
+      }, tapTooltipDurationMs);
+    };
+
+    const syncTapTooltipMode = () => {
+      if (!tapTooltipQuery.matches) hideTapTooltip();
+    };
+
     const syncThemeToggle = () => {
       if (!themeToggleBtn) return;
       const darkActive = isDarkTheme();
@@ -121,9 +150,16 @@
       const nextTheme = isDarkTheme() ? themeLight : themeDark;
       applyTheme(nextTheme, true);
       syncThemeToggle();
+      showTapTooltip();
     });
 
     document.addEventListener(themeChangeEvent, syncThemeToggle);
+    if (typeof tapTooltipQuery.addEventListener === "function") {
+      tapTooltipQuery.addEventListener("change", syncTapTooltipMode);
+    } else if (typeof tapTooltipQuery.addListener === "function") {
+      tapTooltipQuery.addListener(syncTapTooltipMode);
+    }
+    window.addEventListener("blur", hideTapTooltip);
     syncThemeToggle();
   }
 
