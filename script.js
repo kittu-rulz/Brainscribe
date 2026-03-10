@@ -1,15 +1,28 @@
 (() => {
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   const rootNode = document.documentElement;
-  const themeStorageKey = "bs-theme";
+  const themeStorageKeyLegacy = "bs-theme";
+  const themeStorageKeyPhone = "bs-theme-phone";
+  const themeStorageKeyDesktop = "bs-theme-desktop";
   const themeChangeEvent = "bs-theme-change";
   const themeDark = "dark";
   const themeLight = "light";
+  const phoneThemeQuery = window.matchMedia("(max-width: 767px)");
+  const isPhoneViewport = () => phoneThemeQuery.matches;
+  const getThemeStorageKey = () => (isPhoneViewport() ? themeStorageKeyPhone : themeStorageKeyDesktop);
+  const parseTheme = (value) => (value === themeDark || value === themeLight ? value : null);
 
   const getStoredTheme = () => {
     try {
-      const saved = window.localStorage.getItem(themeStorageKey);
-      return saved === themeDark || saved === themeLight ? saved : null;
+      const scopedSaved = parseTheme(window.localStorage.getItem(getThemeStorageKey()));
+      if (scopedSaved) return scopedSaved;
+
+      // Keep legacy preference on larger screens, but let phones use dark default.
+      if (!isPhoneViewport()) {
+        return parseTheme(window.localStorage.getItem(themeStorageKeyLegacy));
+      }
+
+      return null;
     } catch {
       return null;
     }
@@ -24,7 +37,8 @@
 
     if (persist) {
       try {
-        window.localStorage.setItem(themeStorageKey, normalizedTheme);
+        window.localStorage.setItem(getThemeStorageKey(), normalizedTheme);
+        window.localStorage.removeItem(themeStorageKeyLegacy);
         storedTheme = normalizedTheme;
       } catch {
         // Ignore storage write issues and continue with in-memory theme state.
@@ -40,8 +54,9 @@
 
   const isDarkTheme = () => rootNode.dataset.theme === themeDark;
 
-  // Default to light theme unless the user has explicitly chosen one.
-  applyTheme(storedTheme || themeLight);
+  // Default to dark on phones and light on larger screens.
+  const getViewportDefaultTheme = () => (isPhoneViewport() ? themeDark : themeLight);
+  applyTheme(storedTheme || getViewportDefaultTheme());
 
   const topSpacer = document.querySelector(".site-header .top-spacer");
   let themeToggleBtn = null;
