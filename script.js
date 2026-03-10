@@ -112,7 +112,9 @@
 
       themeToggleBtn.setAttribute("aria-pressed", String(darkActive));
       themeToggleBtn.setAttribute("aria-label", label);
-      themeToggleBtn.setAttribute("title", label);
+      themeToggleBtn.removeAttribute("title");
+      themeToggleBtn.setAttribute("data-tooltip", label);
+      themeToggleBtn.setAttribute("data-tooltip-theme", nextTheme);
     };
 
     themeToggleBtn.addEventListener("click", () => {
