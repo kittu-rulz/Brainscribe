@@ -2661,6 +2661,94 @@ body:not(.home-page) .page-hero .hero-copy {
     linear-gradient(180deg, rgba(239, 248, 255, 0.97), rgba(230, 241, 255, 0.94));
 }
 
+.contact-form-host {
+  --hsf-background: #ffffff;
+  --hsf-background__card: #ffffff;
+  --hsf-text-color: #10213f;
+  --hsf-label-color: #19346c;
+  --hsf-field-text-color: #10213f;
+  --hsf-field-background-color: #ffffff;
+  --hsf-field-border-color: rgba(25, 52, 108, 0.18);
+  --hsf-button-background-color: #19346c;
+  --hsf-button-color: #ffffff;
+  --hsf-button-background-color-hover: #2b6cf4;
+  --hsf-global__font-family: "Manrope", sans-serif;
+  position: relative;
+  min-height: 760px;
+  margin-top: 1rem;
+  border-radius: 16px;
+  border: 1px solid rgba(25, 52, 108, 0.1);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.99), rgba(247, 251, 255, 0.98));
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.82) inset,
+    0 20px 40px -34px rgba(16, 33, 63, 0.36);
+  overflow: hidden;
+  color-scheme: light;
+}
+
+.contact-form-host.is-loading::before {
+  content: "Loading secure contact form...";
+  position: absolute;
+  left: 50%;
+  top: 1.2rem;
+  transform: translateX(-50%);
+  z-index: 1;
+  padding: 0.5rem 0.9rem;
+  border-radius: 999px;
+  background: rgba(230, 241, 255, 0.98);
+  border: 1px solid rgba(47, 119, 214, 0.18);
+  color: #304d75;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.contact-form-host.is-loading::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.75) 48%, rgba(255, 255, 255, 0) 100%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(244, 249, 255, 0.98));
+  background-size: 210px 100%, 100% 100%;
+  background-repeat: no-repeat;
+  animation: contactFormShimmer 1.5s linear infinite;
+  pointer-events: none;
+}
+
+.contact-form-host.is-loaded::before,
+.contact-form-host.is-loaded::after {
+  content: none;
+}
+
+.contact-form-host .hs-form-frame,
+.contact-form-host .hs-form-frame iframe {
+  display: block;
+  width: 100%;
+  min-height: 760px;
+  border: 0;
+  background: transparent;
+}
+
+.contact-form-host .hs-form-frame {
+  position: relative;
+  z-index: 2;
+}
+
+.contact-form-host :is(input, select, textarea) {
+  color: #10213f;
+  background: #ffffff;
+}
+
+@keyframes contactFormShimmer {
+  0% {
+    background-position: -220px 0, 0 0;
+  }
+  100% {
+    background-position: calc(100% + 220px) 0, 0 0;
+  }
+}
+
 .contact-form-embed {
   display: block;
   width: 100%;
@@ -2673,6 +2761,12 @@ body:not(.home-page) .page-hero .hero-copy {
 }
 
 @media (max-width: 980px) {
+  .contact-form-host,
+  .contact-form-host .hs-form-frame,
+  .contact-form-host .hs-form-frame iframe {
+    min-height: 820px;
+  }
+
   .contact-form-embed {
     height: 1440px;
     min-height: 1440px;
@@ -2680,6 +2774,12 @@ body:not(.home-page) .page-hero .hero-copy {
 }
 
 @media (max-width: 760px) {
+  .contact-form-host,
+  .contact-form-host .hs-form-frame,
+  .contact-form-host .hs-form-frame iframe {
+    min-height: 900px;
+  }
+
   .contact-form-embed {
     height: 1560px;
     min-height: 1560px;
@@ -5274,6 +5374,17 @@ html[data-theme="dark"] .contact-block {
   box-shadow:
     0 1px 0 rgba(255, 255, 255, 0.05) inset,
     0 18px 44px rgba(0, 0, 0, 0.45);
+}
+
+html[data-theme="dark"] .contact-form-host {
+  border-color: rgba(164, 199, 255, 0.16);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.99), rgba(244, 248, 255, 0.98));
+}
+
+html[data-theme="dark"] .contact-form-host.is-loading::before {
+  background: rgba(233, 241, 255, 0.98);
+  border-color: rgba(90, 162, 255, 0.24);
+  color: #304d75;
 }
 
 html[data-theme="dark"] .step .n {

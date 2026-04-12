@@ -1074,6 +1074,35 @@
     homeTilt.addEventListener("pointercancel", reset);
   }
 
+  const formHost = document.querySelector(".contact-form-host");
+  if (formHost) {
+    const markFormLoaded = () => {
+      formHost.classList.remove("is-loading");
+      formHost.classList.add("is-loaded");
+      formHost.dataset.formLoading = "false";
+    };
+
+    const frameRoot = formHost.querySelector(".hs-form-frame");
+    const hasRenderedForm = () =>
+      !!frameRoot &&
+      (frameRoot.querySelector("iframe") ||
+        frameRoot.querySelector("form") ||
+        frameRoot.children.length > 0);
+
+    if (hasRenderedForm()) {
+      window.setTimeout(markFormLoaded, 120);
+    } else if (frameRoot) {
+      const formObserver = new MutationObserver(() => {
+        if (!hasRenderedForm()) return;
+        markFormLoaded();
+        formObserver.disconnect();
+      });
+
+      formObserver.observe(frameRoot, { childList: true, subtree: true });
+      window.setTimeout(markFormLoaded, 4500);
+    }
+  }
+
   const pulseBadges = document.querySelectorAll(".hero-pulse-row span");
   pulseBadges.forEach((badge, index) => {
     badge.style.setProperty("--pulse-delay", `${index * 220}ms`);
