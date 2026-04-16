@@ -4,6 +4,8 @@
   const themeStorageKeyLegacy = "bs-theme";
   const themeStorageKeyPhone = "bs-theme-phone";
   const themeStorageKeyDesktop = "bs-theme-desktop";
+  const themePreferenceVersionKey = "bs-theme-pref-version";
+  const themePreferenceVersion = "light-default-v1";
   const themeChangeEvent = "bs-theme-change";
   const themeDark = "dark";
   const themeLight = "light";
@@ -11,6 +13,20 @@
   const isPhoneViewport = () => phoneThemeQuery.matches;
   const getThemeStorageKey = () => (isPhoneViewport() ? themeStorageKeyPhone : themeStorageKeyDesktop);
   const parseTheme = (value) => (value === themeDark || value === themeLight ? value : null);
+
+  const migrateThemePreferenceStorage = () => {
+    try {
+      const storedVersion = window.localStorage.getItem(themePreferenceVersionKey);
+      if (storedVersion === themePreferenceVersion) return;
+
+      window.localStorage.removeItem(themeStorageKeyLegacy);
+      window.localStorage.removeItem(themeStorageKeyPhone);
+      window.localStorage.removeItem(themeStorageKeyDesktop);
+      window.localStorage.setItem(themePreferenceVersionKey, themePreferenceVersion);
+    } catch {
+      // Ignore storage read/write issues and continue with runtime defaults.
+    }
+  };
 
   const getStoredTheme = () => {
     try {
@@ -23,6 +39,7 @@
     }
   };
 
+  migrateThemePreferenceStorage();
   let storedTheme = getStoredTheme();
 
   const applyTheme = (nextTheme, persist = false) => {
