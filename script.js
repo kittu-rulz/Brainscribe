@@ -49,10 +49,7 @@
 
   const isDarkTheme = () => rootNode.dataset.theme === themeDark;
 
-<<<<<<< HEAD
-=======
   // Default to light on all devices.
->>>>>>> 4c0c0236adb4b3d86593cb2e47b4aa2ba68b9d86
   const getViewportDefaultTheme = () => themeLight;
   applyTheme(storedTheme || getViewportDefaultTheme());
 
