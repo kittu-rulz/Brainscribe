@@ -17,12 +17,7 @@
       const scopedSaved = parseTheme(window.localStorage.getItem(getThemeStorageKey()));
       if (scopedSaved) return scopedSaved;
 
-      // Keep legacy preference on larger screens, but let phones use dark default.
-      if (!isPhoneViewport()) {
-        return parseTheme(window.localStorage.getItem(themeStorageKeyLegacy));
-      }
-
-      return null;
+      return parseTheme(window.localStorage.getItem(themeStorageKeyLegacy));
     } catch {
       return null;
     }
@@ -54,8 +49,7 @@
 
   const isDarkTheme = () => rootNode.dataset.theme === themeDark;
 
-  // Default to dark on phones and light on larger screens.
-  const getViewportDefaultTheme = () => (isPhoneViewport() ? themeDark : themeLight);
+  const getViewportDefaultTheme = () => themeLight;
   applyTheme(storedTheme || getViewportDefaultTheme());
 
   const topSpacer = document.querySelector(".site-header .top-spacer");
