@@ -54,8 +54,8 @@
 
   const isDarkTheme = () => rootNode.dataset.theme === themeDark;
 
-  // Default to dark on phones and light on larger screens.
-  const getViewportDefaultTheme = () => (isPhoneViewport() ? themeDark : themeLight);
+  // Default to light on all devices.
+  const getViewportDefaultTheme = () => themeLight;
   applyTheme(storedTheme || getViewportDefaultTheme());
 
   const topSpacer = document.querySelector(".site-header .top-spacer");
